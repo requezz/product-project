@@ -27,6 +27,13 @@ export const Input = memo((props: InputProps) => {
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
 
+    useEffect(() => {
+        if (autofocus) {
+            setIsFocused(true);
+            ref.current?.focus();
+        }
+    }, [autofocus]);
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
         setCaretPosition(e.target.value.length);
@@ -43,13 +50,6 @@ export const Input = memo((props: InputProps) => {
     const onSelect = (e: any) => {
         setCaretPosition(e?.target?.selectionStart || 0);
     };
-
-    useEffect(() => {
-        if (autofocus) {
-            setIsFocused(true);
-            ref.current?.focus();
-        }
-    }, [autofocus]);
 
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
