@@ -23,13 +23,14 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 import cls from './AppLink.module.scss';
 export var AppLinkTheme;
 (function (AppLinkTheme) {
     AppLinkTheme["PRIMARY"] = "primary";
     AppLinkTheme["SECONDARY"] = "secondary";
 })(AppLinkTheme || (AppLinkTheme = {}));
-export var AppLink = function (props) {
+export var AppLink = memo(function (props) {
     var to = props.to, className = props.className, children = props.children, _a = props.theme, theme = _a === void 0 ? AppLinkTheme.PRIMARY : _a, otherProps = __rest(props, ["to", "className", "children", "theme"]);
     return (_jsx(Link, __assign({ to: to, className: classNames(cls.AppLink, {}, [className, cls[theme]]) }, otherProps, { children: children })));
-};
+});

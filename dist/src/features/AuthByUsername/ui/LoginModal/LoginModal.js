@@ -12,9 +12,10 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/ui/Modal/Modal';
-import cls from './LoginModal.module.scss';
-import { LoginForm } from '../LoginForm/LoginForm';
+import { Suspense } from 'react';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 export var LoginModal = function (_a) {
     var className = _a.className, isOpen = _a.isOpen, isClose = _a.isClose;
-    return (_jsx(Modal, __assign({ className: classNames(cls.LoginForm, {}, [className]), isOpen: isOpen, onClose: isClose }, { children: _jsx(LoginForm, {}) })));
+    return (_jsx(Modal, __assign({ className: classNames('', {}, [className]), isOpen: isOpen, onClose: isClose }, { children: _jsx(Suspense, __assign({ fallback: _jsx(Loader, {}) }, { children: _jsx(LoginFormAsync, { onSuccess: isClose }) })) })));
 };

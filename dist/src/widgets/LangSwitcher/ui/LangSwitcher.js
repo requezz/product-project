@@ -13,11 +13,12 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
-export var LangSwitcher = function (_a) {
+import { memo } from 'react';
+export var LangSwitcher = memo(function (_a) {
     var className = _a.className, short = _a.short;
     var _b = useTranslation(), t = _b.t, i18n = _b.i18n;
     var toggle = function () {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
     return (_jsx(Button, __assign({ className: classNames('', {}, [className]), theme: ButtonType.CLEAR, onClick: toggle }, { children: t(short ? 'Короткий язык' : 'Язык') })));
-};
+});

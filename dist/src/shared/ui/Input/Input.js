@@ -20,14 +20,36 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState, } from 'react';
 import cls from './Input.module.scss';
 export var Input = memo(function (props) {
-    var className = props.className, value = props.value, onChange = props.onChange, _a = props.type, type = _a === void 0 ? 'text' : _a, otherProps = __rest(props, ["className", "value", "onChange", "type"]);
+    var className = props.className, value = props.value, onChange = props.onChange, _a = props.type, type = _a === void 0 ? 'text' : _a, placeholder = props.placeholder, autofocus = props.autofocus, otherProps = __rest(props, ["className", "value", "onChange", "type", "placeholder", "autofocus"]);
+    var ref = useRef(null);
+    var _b = useState(false), isFocused = _b[0], setIsFocused = _b[1];
+    var _c = useState(0), caretPosition = _c[0], setCaretPosition = _c[1];
+    useEffect(function () {
+        var _a;
+        if (autofocus) {
+            setIsFocused(true);
+            (_a = ref.current) === null || _a === void 0 ? void 0 : _a.focus();
+        }
+    }, [autofocus]);
     var onChangeHandler = function (e) {
         onChange === null || onChange === void 0 ? void 0 : onChange(e.target.value);
+        setCaretPosition(e.target.value.length);
     };
-    return (_jsx("div", __assign({ className: classNames(cls.Input, {}, [className]) }, { children: _jsx("input", { type: type, value: value, onChange: onChangeHandler }) })));
+    var onBlur = function () {
+        setIsFocused(false);
+    };
+    var onFocus = function () {
+        setIsFocused(true);
+    };
+    var onSelect = function (e) {
+        var _a;
+        setCaretPosition(((_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.selectionStart) || 0);
+    };
+    return (_jsxs("div", __assign({ className: classNames(cls.InputWrapper, {}, [className]) }, { children: [placeholder && (_jsx("div", __assign({ className: cls.placeholder }, { children: "".concat(placeholder, ">") }))), _jsxs("div", __assign({ className: cls.caretWrapper }, { children: [_jsx("input", __assign({ ref: ref, type: type, value: value, onChange: onChangeHandler, className: cls.input, onFocus: onFocus, onBlur: onBlur, onSelect: onSelect }, otherProps)), isFocused
+                        && (_jsx("span", { className: cls.caret, style: { left: "".concat(caretPosition * 9, "px") } }))] }))] })));
 });

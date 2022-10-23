@@ -11,9 +11,9 @@ var __assign = (this && this.__assign) || function () {
 };
 import { jsx as _jsx } from "react/jsx-runtime";
 import { Provider } from 'react-redux';
-import { createConfigureStore } from 'app/providers/StoreProvider/config/store';
+import { createReduxStore } from 'app/providers/StoreProvider/config/store';
 export var StoreProvider = function (props) {
-    var children = props.children, initialState = props.initialState;
-    var store = createConfigureStore(initialState);
+    var children = props.children, initialState = props.initialState, asyncReducers = props.asyncReducers;
+    var store = createReduxStore(initialState, asyncReducers);
     return (_jsx(Provider, __assign({ store: store }, { children: children })));
 };

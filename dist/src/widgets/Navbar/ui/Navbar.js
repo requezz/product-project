@@ -13,18 +13,28 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserAuthData, userActions } from 'entities/User';
 import cls from './Navbar.module.scss';
-export var Navbar = function (_a) {
+export var Navbar = memo(function (_a) {
     var className = _a.className;
     var t = useTranslation().t;
     var _b = useState(false), isAuthModal = _b[0], setIsAuthModal = _b[1];
+    var authData = useSelector(getUserAuthData);
+    var dispatch = useDispatch();
     var onCloseModal = useCallback(function () {
         setIsAuthModal(false);
     }, []);
     var onShowModal = useCallback(function () {
         setIsAuthModal(true);
     }, []);
-    return (_jsxs("div", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onShowModal }, { children: t('Войти') })), _jsx(LoginModal, { isOpen: isAuthModal, isClose: onCloseModal })] })));
-};
+    var onLogout = useCallback(function () {
+        dispatch(userActions.logout());
+    }, [dispatch]);
+    if (authData) {
+        return (_jsx("div", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: _jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onLogout }, { children: t('Выйти') })) })));
+    }
+    return (_jsxs("div", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onShowModal }, { children: t('Войти') })), isAuthModal && _jsx(LoginModal, { isOpen: isAuthModal, isClose: onCloseModal })] })));
+});

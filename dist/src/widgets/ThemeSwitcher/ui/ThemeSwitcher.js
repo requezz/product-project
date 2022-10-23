@@ -15,8 +15,9 @@ import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
-export var ThemeSwitcher = function (_a) {
+import { memo } from 'react';
+export var ThemeSwitcher = memo(function (_a) {
     var className = _a.className;
     var _b = useTheme(), theme = _b.theme, toggleTheme = _b.toggleTheme;
     return (_jsx(Button, __assign({ theme: ButtonType.CLEAR, className: classNames('', {}, [className]), onClick: toggleTheme }, { children: theme === Theme.DARK ? _jsx(DarkIcon, {}) : _jsx(LightIcon, {}) })));
-};
+});

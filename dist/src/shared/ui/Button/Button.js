@@ -22,6 +22,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
 import cls from './Button.module.scss';
 export var ButtonType;
 (function (ButtonType) {
@@ -37,11 +38,14 @@ export var ButtonSize;
     ButtonSize["M"] = "size_m";
     ButtonSize["XL"] = "size_xl";
 })(ButtonSize || (ButtonSize = {}));
-export var Button = function (props) {
+export var Button = memo(function (props) {
     var _a;
-    var className = props.className, children = props.children, theme = props.theme, square = props.square, _b = props.size, size = _b === void 0 ? ButtonSize.M : _b, otherProps = __rest(props, ["className", "children", "theme", "square", "size"]);
+    var className = props.className, children = props.children, theme = props.theme, square = props.square, disabled = props.disabled, _b = props.size, size = _b === void 0 ? ButtonSize.M : _b, otherProps = __rest(props, ["className", "children", "theme", "square", "disabled", "size"]);
     var mods = (_a = {},
+        _a[cls[theme]] = true,
         _a[cls.square] = square,
+        _a[cls[size]] = true,
+        _a[cls.disabled] = disabled,
         _a);
-    return (_jsx("button", __assign({ type: "button", className: classNames(cls.Button, mods, [className, cls[theme], cls[size]]) }, otherProps, { children: children })));
-};
+    return (_jsx("button", __assign({ type: "button", className: classNames(cls.Button, mods, [className, cls[theme], cls[size]]), disabled: disabled }, otherProps, { children: children })));
+});
