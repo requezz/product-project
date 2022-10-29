@@ -9,18 +9,45 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
-import { profileReducer } from "entities/Profile";
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileActions, ProfileCard, profileReducer, } from 'entities/Profile';
+import { useSelector } from 'react-redux';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 var reducers = {
-    profile: profileReducer
+    profile: profileReducer,
 };
 var ProfilePage = memo(function (_a) {
     var className = _a.className;
-    var t = useTranslation().t;
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: true }, { children: _jsx("div", __assign({ className: classNames('', {}, [className]) }, { children: t('PROFILE PAGE') })) })));
+    var dispatch = useAppDispatch();
+    var formData = useSelector(getProfileForm);
+    var error = useSelector(getProfileError);
+    var isLoading = useSelector(getProfileIsLoading);
+    var readonly = useSelector(getProfileReadonly);
+    useEffect(function () {
+        dispatch(fetchProfileData());
+    }, [dispatch]);
+    var onChangeFirstname = useCallback(function (value) {
+        dispatch(profileActions.updateProfile({ first: value || '' }));
+    }, [dispatch]);
+    var onChangeLastname = useCallback(function (value) {
+        dispatch(profileActions.updateProfile({ lastname: value || '' }));
+    }, [dispatch]);
+    var onChangeAge = useCallback(function (value) {
+        dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
+    }, [dispatch]);
+    var onChangeCity = useCallback(function (value) {
+        dispatch(profileActions.updateProfile({ city: value || '' }));
+    }, [dispatch]);
+    var onChangeUsername = useCallback(function (value) {
+        dispatch(profileActions.updateProfile({ username: value || '' }));
+    }, [dispatch]);
+    var onChangeAvatar = useCallback(function (value) {
+        dispatch(profileActions.updateProfile({ avatar: value || '' }));
+    }, [dispatch]);
+    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsxs("div", __assign({ className: classNames('', {}, [className]) }, { children: [_jsx(ProfilePageHeader, {}), _jsx(ProfileCard, { data: formData, error: error, isLoading: isLoading, readonly: readonly, onChangeFirstname: onChangeFirstname, onChangeLastname: onChangeLastname, onChangeAge: onChangeAge, onChangeCity: onChangeCity, onChangeUsername: onChangeUsername, onChangeAvatar: onChangeAvatar })] })) })));
 });
 export default ProfilePage;

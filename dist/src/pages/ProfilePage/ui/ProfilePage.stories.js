@@ -12,7 +12,8 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import ProfilePage from "pages/ProfilePage/ui/ProfilePage";
+import ProfilePage from 'pages/ProfilePage/ui/ProfilePage';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 export default {
     title: 'pages/ProfilePage',
     component: ProfilePage,
@@ -21,8 +22,9 @@ export default {
     },
 };
 var Template = function (args) { return _jsx(ProfilePage, __assign({}, args)); };
-export var Light = Template.bind({});
-Light.args = {};
+export var Normal = Template.bind({});
+Normal.args = {};
+Normal.decorators = [StoreDecorator({})];
 export var Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];

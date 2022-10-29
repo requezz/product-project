@@ -25,10 +25,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useEffect, useRef, useState, } from 'react';
 import cls from './Input.module.scss';
 export var Input = memo(function (props) {
-    var className = props.className, value = props.value, onChange = props.onChange, _a = props.type, type = _a === void 0 ? 'text' : _a, placeholder = props.placeholder, autofocus = props.autofocus, otherProps = __rest(props, ["className", "value", "onChange", "type", "placeholder", "autofocus"]);
+    var _a;
+    var className = props.className, value = props.value, onChange = props.onChange, _b = props.type, type = _b === void 0 ? 'text' : _b, placeholder = props.placeholder, autofocus = props.autofocus, readonly = props.readonly, otherProps = __rest(props, ["className", "value", "onChange", "type", "placeholder", "autofocus", "readonly"]);
     var ref = useRef(null);
-    var _b = useState(false), isFocused = _b[0], setIsFocused = _b[1];
-    var _c = useState(0), caretPosition = _c[0], setCaretPosition = _c[1];
+    var _c = useState(false), isFocused = _c[0], setIsFocused = _c[1];
+    var _d = useState(0), caretPosition = _d[0], setCaretPosition = _d[1];
+    var isCaretVisible = isFocused && !readonly;
     useEffect(function () {
         var _a;
         if (autofocus) {
@@ -50,6 +52,9 @@ export var Input = memo(function (props) {
         var _a;
         setCaretPosition(((_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.selectionStart) || 0);
     };
-    return (_jsxs("div", __assign({ className: classNames(cls.InputWrapper, {}, [className]) }, { children: [placeholder && (_jsx("div", __assign({ className: cls.placeholder }, { children: "".concat(placeholder, ">") }))), _jsxs("div", __assign({ className: cls.caretWrapper }, { children: [_jsx("input", __assign({ ref: ref, type: type, value: value, onChange: onChangeHandler, className: cls.input, onFocus: onFocus, onBlur: onBlur, onSelect: onSelect }, otherProps)), isFocused
+    var mods = (_a = {},
+        _a[cls.readonly] = readonly,
+        _a);
+    return (_jsxs("div", __assign({ className: classNames(cls.InputWrapper, {}, [className]) }, { children: [placeholder && (_jsx("div", __assign({ className: cls.placeholder }, { children: "".concat(placeholder, ">") }))), _jsxs("div", __assign({ className: cls.caretWrapper }, { children: [_jsx("input", __assign({ ref: ref, type: type, value: value, onChange: onChangeHandler, className: cls.input, onFocus: onFocus, onBlur: onBlur, onSelect: onSelect, readOnly: readonly }, otherProps)), isCaretVisible
                         && (_jsx("span", { className: cls.caret, style: { left: "".concat(caretPosition * 9, "px") } }))] }))] })));
 });

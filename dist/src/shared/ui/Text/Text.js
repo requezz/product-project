@@ -18,8 +18,18 @@ export var TextTheme;
     TextTheme["PRIMARY"] = "primary";
     TextTheme["ERROR"] = "error";
 })(TextTheme || (TextTheme = {}));
+export var TextAlign;
+(function (TextAlign) {
+    TextAlign["RIGHT"] = "right";
+    TextAlign["LEFT"] = "left";
+    TextAlign["CENTER"] = "center";
+})(TextAlign || (TextAlign = {}));
 export var Text = memo(function (props) {
     var _a;
-    var className = props.className, title = props.title, text = props.text, _b = props.theme, theme = _b === void 0 ? TextTheme.PRIMARY : _b;
-    return (_jsxs("div", __assign({ className: classNames(cls.Text, (_a = {}, _a[cls[theme]] = true, _a), [className]) }, { children: [title && _jsx("p", __assign({ className: cls.title }, { children: title })), text && _jsx("p", __assign({ className: cls.text }, { children: text }))] })));
+    var className = props.className, title = props.title, text = props.text, _b = props.theme, theme = _b === void 0 ? TextTheme.PRIMARY : _b, _c = props.align, align = _c === void 0 ? TextAlign.LEFT : _c;
+    var mods = (_a = {},
+        _a[cls[theme]] = true,
+        _a[cls[align]] = true,
+        _a);
+    return (_jsxs("div", __assign({ className: classNames(cls.Text, mods, [className]) }, { children: [title && _jsx("p", __assign({ className: cls.title }, { children: title })), text && _jsx("p", __assign({ className: cls.text }, { children: text }))] })));
 });

@@ -22,13 +22,14 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, } from 'react';
 import cls from './Button.module.scss';
 export var ButtonType;
 (function (ButtonType) {
     ButtonType["CLEAR"] = "clear";
     ButtonType["CLEAR_INVERTED"] = "clearInverted";
     ButtonType["OUTLINE"] = "outline";
+    ButtonType["OUTLINE_RED"] = "outlineRed";
     ButtonType["BACKGROUND"] = "background";
     ButtonType["BACKGROUND_INVERTED"] = "backgroundInverted";
 })(ButtonType || (ButtonType = {}));
@@ -40,7 +41,7 @@ export var ButtonSize;
 })(ButtonSize || (ButtonSize = {}));
 export var Button = memo(function (props) {
     var _a;
-    var className = props.className, children = props.children, theme = props.theme, square = props.square, disabled = props.disabled, _b = props.size, size = _b === void 0 ? ButtonSize.M : _b, otherProps = __rest(props, ["className", "children", "theme", "square", "disabled", "size"]);
+    var className = props.className, children = props.children, _b = props.theme, theme = _b === void 0 ? ButtonType.OUTLINE : _b, square = props.square, disabled = props.disabled, _c = props.size, size = _c === void 0 ? ButtonSize.M : _c, otherProps = __rest(props, ["className", "children", "theme", "square", "disabled", "size"]);
     var mods = (_a = {},
         _a[cls[theme]] = true,
         _a[cls.square] = square,

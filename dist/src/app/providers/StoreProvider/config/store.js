@@ -9,17 +9,27 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
+import { $api } from 'shared/api/api';
 import { createReducerManager } from './reducerManager';
-export function createReduxStore(initialState, asyncReducers) {
+export function createReduxStore(initialState, asyncReducers, navigate) {
     var rootReducers = __assign(__assign({}, asyncReducers), { counter: counterReducer, user: userReducer });
     var reducerManager = createReducerManager(rootReducers);
+    var extraArg = {
+        api: $api,
+        navigate: navigate,
+    };
     var store = configureStore({
         reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
+        middleware: function (getDefaultMiddleware) { return getDefaultMiddleware({
+            thunk: {
+                extraArgument: extraArg,
+            },
+        }); },
     });
     // @ts-ignore
     store.reducerManager = reducerManager;

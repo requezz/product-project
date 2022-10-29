@@ -34,11 +34,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+import axios from 'axios';
+jest.mock('axios');
+var mockedAxios = jest.mocked(axios, true);
 var TestAsyncThunk = /** @class */ (function () {
     function TestAsyncThunk(actionCreator) {
         this.actionCreator = actionCreator;
         this.dispatch = jest.fn();
         this.getState = jest.fn();
+        this.api = mockedAxios;
+        this.navigate = jest.fn();
     }
     TestAsyncThunk.prototype.callThunk = function (arg) {
         return __awaiter(this, void 0, void 0, function () {
@@ -47,7 +52,7 @@ var TestAsyncThunk = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         action = this.actionCreator(arg);
-                        return [4 /*yield*/, action(this.dispatch, this.getState, undefined)];
+                        return [4 /*yield*/, action(this.dispatch, this.getState, { api: this.api, navigate: this.navigate })];
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result];

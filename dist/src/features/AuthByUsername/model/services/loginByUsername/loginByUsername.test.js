@@ -34,12 +34,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import axios from 'axios';
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './loginByUsername';
-jest.mock('axios');
-var mockedAxios = jest.mocked(axios, true);
 describe('loginByUsername.test', function () {
     // let dispatch: Dispatch;
     // let getState: () => StateSchema;
@@ -80,15 +77,15 @@ describe('loginByUsername.test', function () {
             switch (_a.label) {
                 case 0:
                     userValue = { username: 'admin', id: 1 };
-                    mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
                     thunk = new TestAsyncThunk(loginByUsername);
+                    thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
                     return [4 /*yield*/, thunk.callThunk({ username: 'admin', password: '123' })];
                 case 1:
                     result = _a.sent();
                     // @ts-ignore
                     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
                     expect(thunk.dispatch).toHaveBeenCalledTimes(3);
-                    expect(mockedAxios.post).toHaveBeenCalled();
+                    expect(thunk.api.post).toHaveBeenCalled();
                     expect(result.meta.requestStatus).toBe('fulfilled');
                     expect(result.payload).toBe(userValue);
                     console.log(result);
@@ -101,13 +98,13 @@ describe('loginByUsername.test', function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
                     thunk = new TestAsyncThunk(loginByUsername);
+                    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
                     return [4 /*yield*/, thunk.callThunk({ username: 'admin', password: '123' })];
                 case 1:
                     result = _a.sent();
                     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
-                    expect(mockedAxios.post).toHaveBeenCalled();
+                    expect(thunk.api.post).toHaveBeenCalled();
                     expect(result.meta.requestStatus).toBe('rejected');
                     expect(result.payload).toBe('rejected');
                     console.log(result);

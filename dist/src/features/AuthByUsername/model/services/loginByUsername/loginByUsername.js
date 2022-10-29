@@ -37,27 +37,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
-import axios from 'axios';
 export var loginByUsername = createAsyncThunk('login/loginByUsername', function (authData, thunkApi) { return __awaiter(void 0, void 0, void 0, function () {
-    var response, e_1;
+    var extra, dispatch, rejectWithValue, response, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, axios.post('http://localhost:8000/login', authData)];
+                extra = thunkApi.extra, dispatch = thunkApi.dispatch, rejectWithValue = thunkApi.rejectWithValue;
+                _a.label = 1;
             case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, extra.api.post('/login', authData)];
+            case 2:
                 response = _a.sent();
                 if (!response.data) {
                     throw new Error();
                 }
                 localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
-                thunkApi.dispatch(userActions.setAuthData(response.data));
+                dispatch(userActions.setAuthData(response.data));
                 return [2 /*return*/, response.data];
-            case 2:
+            case 3:
                 e_1 = _a.sent();
                 console.log(e_1);
-                return [2 /*return*/, thunkApi.rejectWithValue('error')];
-            case 3: return [2 /*return*/];
+                return [2 /*return*/, rejectWithValue('error')];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
