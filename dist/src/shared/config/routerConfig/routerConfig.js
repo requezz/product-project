@@ -31,6 +31,7 @@ export var routeConfig = (_b = {},
     _b[AppRoutes.PROFILE] = {
         path: RoutePath.profile,
         element: _jsx(ProfilePage, {}),
+        authOnly: true,
     },
     // last
     _b[AppRoutes.NOT_FOUND] = {

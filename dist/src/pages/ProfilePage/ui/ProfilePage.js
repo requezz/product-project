@@ -14,21 +14,35 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback, useEffect } from 'react';
 import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, profileActions, ProfileCard, profileReducer, } from 'entities/Profile';
+import { fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, profileActions, ProfileCard, profileReducer, ValidateProfileError, } from 'entities/Profile';
 import { useSelector } from 'react-redux';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 var reducers = {
     profile: profileReducer,
 };
 var ProfilePage = memo(function (_a) {
+    var _b;
     var className = _a.className;
+    var t = useTranslation('profile').t;
     var dispatch = useAppDispatch();
     var formData = useSelector(getProfileForm);
     var error = useSelector(getProfileError);
     var isLoading = useSelector(getProfileIsLoading);
     var readonly = useSelector(getProfileReadonly);
+    var validateErrors = useSelector(getProfileValidateErrors);
+    var validateErrorTranslates = (_b = {},
+        _b[ValidateProfileError.SERVER_ERROR] = t('Серверная ошибка при сохранении'),
+        _b[ValidateProfileError.INCORRECT_COUNTRY] = t('Некорректный регион'),
+        _b[ValidateProfileError.NO_DATA] = t('Данные не указаны'),
+        _b[ValidateProfileError.INCORRECT_USER_DATA] = t('Имя и фамилия обязательны'),
+        _b[ValidateProfileError.INCORRECT_AGE] = t('Некорректный возраст'),
+        _b);
     useEffect(function () {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
     var onChangeFirstname = useCallback(function (value) {
         dispatch(profileActions.updateProfile({ first: value || '' }));
@@ -48,6 +62,12 @@ var ProfilePage = memo(function (_a) {
     var onChangeAvatar = useCallback(function (value) {
         dispatch(profileActions.updateProfile({ avatar: value || '' }));
     }, [dispatch]);
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsxs("div", __assign({ className: classNames('', {}, [className]) }, { children: [_jsx(ProfilePageHeader, {}), _jsx(ProfileCard, { data: formData, error: error, isLoading: isLoading, readonly: readonly, onChangeFirstname: onChangeFirstname, onChangeLastname: onChangeLastname, onChangeAge: onChangeAge, onChangeCity: onChangeCity, onChangeUsername: onChangeUsername, onChangeAvatar: onChangeAvatar })] })) })));
+    var onChangeCurrency = useCallback(function (currency) {
+        dispatch(profileActions.updateProfile({ currency: currency }));
+    }, [dispatch]);
+    var onChangeCountry = useCallback(function (country) {
+        dispatch(profileActions.updateProfile({ country: country }));
+    }, [dispatch]);
+    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsxs("div", __assign({ className: classNames('', {}, [className]) }, { children: [_jsx(ProfilePageHeader, {}), (validateErrors === null || validateErrors === void 0 ? void 0 : validateErrors.length) && validateErrors.map(function (err) { return (_jsx(Text, { theme: TextTheme.ERROR, text: validateErrorTranslates[err] }, err)); }), _jsx(ProfileCard, { data: formData, error: error, isLoading: isLoading, readonly: readonly, onChangeFirstname: onChangeFirstname, onChangeLastname: onChangeLastname, onChangeAge: onChangeAge, onChangeCity: onChangeCity, onChangeUsername: onChangeUsername, onChangeAvatar: onChangeAvatar, onChangeCurrency: onChangeCurrency, onChangeCountry: onChangeCountry })] })) })));
 });
 export default ProfilePage;
