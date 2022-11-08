@@ -12,6 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Sidebar } from './Sidebar';
 export default {
     title: 'widget/Sidebar',
@@ -23,6 +24,23 @@ export default {
 var Template = function (args) { return _jsx(Sidebar, __assign({}, args)); };
 export var Light = Template.bind({});
 Light.args = {};
+Light.decorators = [
+    StoreDecorator({
+        user: { authData: {} },
+    }),
+];
 export var Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        user: { authData: {} },
+    }),
+];
+export var NoAuth = Template.bind({});
+NoAuth.args = {};
+NoAuth.decorators = [
+    StoreDecorator({
+        user: {},
+    }),
+];

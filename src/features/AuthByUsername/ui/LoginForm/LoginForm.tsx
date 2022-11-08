@@ -5,7 +5,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -20,7 +20,7 @@ export interface LoginFormProps {
     onSuccess: () => void
 }
 
-const initialReducers: ReducerList = {
+const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 

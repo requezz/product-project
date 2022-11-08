@@ -34,5 +34,5 @@ export const SidebarItemList: SidebarItemType[] = [
         Icon: ArticleIcon,
         text: 'Статьи',
         authOnly: true,
-    }
+    },
 ];

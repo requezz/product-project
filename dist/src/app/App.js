@@ -15,12 +15,13 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { useDispatch } from 'react-redux';
-import { userActions } from 'entities/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInited, userActions } from 'entities/User';
 export function App() {
     var dispatch = useDispatch();
+    var inited = useSelector(getUserInited);
     useEffect(function () {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
-    return (_jsx("div", __assign({ className: classNames('app', {}, []) }, { children: _jsxs(Suspense, __assign({ fallback: "" }, { children: [_jsx(Navbar, {}), _jsxs("div", __assign({ className: "content-page" }, { children: [_jsx(Sidebar, {}), _jsx(AppRouter, {})] }))] })) })));
+    return (_jsx("div", __assign({ className: classNames('app', {}, []) }, { children: _jsxs(Suspense, __assign({ fallback: "" }, { children: [_jsx(Navbar, {}), _jsxs("div", __assign({ className: "content-page" }, { children: [_jsx(Sidebar, {}), inited && _jsx(AppRouter, {})] }))] })) })));
 }

@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback, useEffect } from 'react';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     fetchProfileData,
@@ -20,7 +20,7 @@ import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
-const reducers: ReducerList = {
+const reducers: ReducersList = {
     profile: profileReducer,
 };
 

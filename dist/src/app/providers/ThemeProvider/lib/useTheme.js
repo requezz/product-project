@@ -3,7 +3,20 @@ import { useContext } from 'react';
 export function useTheme() {
     var _a = useContext(ThemeContext), theme = _a.theme, setTheme = _a.setTheme;
     var toggleTheme = function () {
-        var newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+        var newTheme;
+        switch (theme) {
+            case Theme.DARK:
+                newTheme = Theme.LIGHT;
+                break;
+            case Theme.LIGHT:
+                newTheme = Theme.GREEN;
+                break;
+            case Theme.GREEN:
+                newTheme = Theme.DARK;
+                break;
+            default:
+                newTheme = Theme.LIGHT;
+        }
         setTheme === null || setTheme === void 0 ? void 0 : setTheme(newTheme);
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
