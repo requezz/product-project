@@ -117,13 +117,16 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzuoCfEKbzKiqe6HoXmuyK5RyHM0U3WJQxxw&usqp=CAU"
     },
     {
       "id": "2",
       "username": "user",
       "password": "321",
-      "role":  "USER"
+      "role":  "USER",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrAFA1rXJ-xQ4JFcAD_cTI6uq7T4P4JCGlw&usqp=CAU"
+
     }
   ],
   "profile": {
