@@ -13,8 +13,13 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { StoreProvider } from 'app/providers/StoreProvider';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { profileReducer } from 'entities/Profile';
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
 var defaultAsyncReducers = {
     loginForm: loginReducer,
     profile: profileReducer,
+    articleDetails: articleDetailsReducer,
+    addCommentForm: addCommentFormReducer,
+    articleDetailsComments: articleDetailsReducer,
 };
 export var StoreDecorator = function (state, asyncReducers) { return function (StoryComponent) { return (_jsx(StoreProvider, __assign({ initialState: state, asyncReducers: __assign(__assign({}, defaultAsyncReducers), asyncReducers) }, { children: _jsx(StoryComponent, {}) }))); }; };

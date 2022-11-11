@@ -25,5 +25,5 @@ export var SidebarItemList = [
         Icon: ArticleIcon,
         text: 'Статьи',
         authOnly: true,
-    }
+    },
 ];

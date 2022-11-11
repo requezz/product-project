@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 export default {
@@ -56,3 +56,9 @@ onlyTextDark.args = {
     text: 'Description Description Description Description',
 };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+export var SizeL = Template.bind({});
+SizeL.args = {
+    title: 'Text Lorem Ipsum',
+    text: 'Description Description Description Description',
+    size: TextSize.L,
+};

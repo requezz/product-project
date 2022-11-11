@@ -29,7 +29,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -110,6 +112,24 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "1234dfdfdf",
+      "id": "E40kAVh"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "user 232323223",
+      "id": "ljrMBEB"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "привет мир",
+      "id": "x6JGIyo"
     }
   ],
   "users": [
@@ -124,19 +144,32 @@
       "id": "2",
       "username": "user",
       "password": "321",
-      "role":  "USER",
+      "role": "USER",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrAFA1rXJ-xQ4JFcAD_cTI6uq7T4P4JCGlw&usqp=CAU"
-
     }
   ],
-  "profile": {
-    "lastname": "Muzagov",
-    "first": "Islam",
-    "age": 18,
-    "city": "Grozny",
-    "currency": "EUR",
-    "country": "Russia",
-    "username": "islam",
-    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrAFA1rXJ-xQ4JFcAD_cTI6uq7T4P4JCGlw&usqp=CAU"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "lastname": "Muzagov",
+      "first": "Islam",
+      "age": 18,
+      "city": "Grozny",
+      "currency": "EUR",
+      "country": "Russia",
+      "username": "islam",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrAFA1rXJ-xQ4JFcAD_cTI6uq7T4P4JCGlw&usqp=CAU"
+    },
+    {
+      "id": "2",
+      "lastname": "End",
+      "first": "Front",
+      "age": 19,
+      "city": "Grodno",
+      "currency": "RUB",
+      "country": "Belarus",
+      "username": "developer",
+      "avatar": "https://img.freepik.com/free-vector/hacker-realistic-composition_98292-38.jpg?1"
+    }
+  ]
 }

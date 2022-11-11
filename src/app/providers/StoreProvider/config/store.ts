@@ -7,6 +7,7 @@ import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { NavigateOptions } from 'react-router';
 import { To } from 'history';
+import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
@@ -18,6 +19,7 @@ export function createReduxStore(
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        addCommentForm: addCommentFormReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

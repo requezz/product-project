@@ -13,9 +13,10 @@ import { configureStore, } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
+import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
 import { createReducerManager } from './reducerManager';
 export function createReduxStore(initialState, asyncReducers, navigate) {
-    var rootReducers = __assign(__assign({}, asyncReducers), { counter: counterReducer, user: userReducer });
+    var rootReducers = __assign(__assign({}, asyncReducers), { counter: counterReducer, user: userReducer, addCommentForm: addCommentFormReducer });
     var reducerManager = createReducerManager(rootReducers);
     var extraArg = {
         api: $api,
