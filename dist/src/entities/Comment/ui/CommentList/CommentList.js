@@ -9,7 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
@@ -19,5 +19,8 @@ import cls from './CommentList.module.scss';
 export var CommentList = memo(function (props) {
     var className = props.className, comments = props.comments, isLoading = props.isLoading;
     var t = useTranslation().t;
+    if (isLoading) {
+        return (_jsxs("div", __assign({ className: classNames(cls.CommentList, {}, [className]) }, { children: [_jsx(CommentCard, { isLoading: true }), _jsx(CommentCard, { isLoading: true }), _jsx(CommentCard, { isLoading: true })] })));
+    }
     return (_jsx("div", __assign({ className: classNames(cls.CommentList, {}, [className]) }, { children: (comments === null || comments === void 0 ? void 0 : comments.length) ? comments.map(function (comment) { return (_jsx(CommentCard, { isLoading: isLoading, className: cls.comment, comment: comment })); }) : _jsx(Text, { text: t('Комментарии отсутствуют') }) })));
 });

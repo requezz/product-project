@@ -10,11 +10,16 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import { ArticleList, ArticleView } from 'entities/Article';
-import cls from './ArticlesPage.module.scss';
+import { ArticleView } from '../../model/types/article';
+import { ArticleListItem } from './ArticleListItem';
+export default {
+    title: 'entities/Article/ArticleListItem',
+    component: ArticleListItem,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+};
+var Template = function (args) { return _jsx(ArticleListItem, __assign({}, args)); };
 var article = {
     id: '1',
     title: 'Javascript news',
@@ -131,9 +136,13 @@ var article = {
         },
     ],
 };
-var ArticlesPage = function (_a) {
-    var className = _a.className;
-    var t = useTranslation().t;
-    return (_jsx("div", __assign({ className: classNames(cls.ArticlesPage, {}, [className]) }, { children: _jsx(ArticleList, { isLoading: true, view: ArticleView.BIG, articles: [] }) })));
+export var Big = Template.bind({});
+Big.args = {
+    view: ArticleView.BIG,
+    article: article,
 };
-export default memo(ArticlesPage);
+export var Small = Template.bind({});
+Small.args = {
+    view: ArticleView.SMALL,
+    article: article,
+};

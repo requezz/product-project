@@ -14,15 +14,17 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { fetchCommentsByArticleId, } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { AddCommentForm } from 'features/addCommentForm';
-import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
+import { Button, ButtonType } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
@@ -36,6 +38,10 @@ var ArticleDetailsPage = function (_a) {
     var comments = useSelector(getArticleComments.selectAll);
     var commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     var dispatch = useDispatch();
+    var navigate = useNavigate();
+    var onBackToList = useCallback(function () {
+        navigate(RoutePath.articles);
+    }, [navigate]);
     var onSendComment = useCallback(function (text) {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
@@ -45,6 +51,6 @@ var ArticleDetailsPage = function (_a) {
     if (!id) {
         return (_jsx("div", __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: t('Статья не найдена') })));
     }
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsxs("div", __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: [_jsx(ArticleDetails, { id: id }), _jsx(Text, { className: cls.commentTitle, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })) })));
+    return (_jsxs(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: [_jsx(Button, __assign({ theme: ButtonType.OUTLINE, onClick: onBackToList }, { children: t('Назад к списку') })), _jsxs("div", __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: [_jsx(ArticleDetails, { id: id }), _jsx(Text, { className: cls.commentTitle, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] }))] })));
 };
 export default memo(ArticleDetailsPage);

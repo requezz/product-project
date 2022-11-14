@@ -10,32 +10,17 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { CommentList } from './CommentList';
+import { Text } from 'shared/ui/Text/Text';
+import { Card } from './Card';
 export default {
-    title: 'entities/Comment/CommentList',
-    component: CommentList,
+    title: 'shared/Card',
+    component: Card,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
 };
-var Template = function (args) { return _jsx(CommentList, __assign({}, args)); };
+var Template = function (args) { return _jsx(Card, __assign({}, args)); };
 export var Normal = Template.bind({});
 Normal.args = {
-    comments: [
-        {
-            id: '1',
-            text: 'hello world',
-            user: { id: '1', username: 'Islam' },
-        },
-        {
-            id: '2',
-            text: 'comment 2',
-            user: { id: '2', username: 'Viskhan' },
-        },
-    ],
-};
-export var Loading = Template.bind({});
-Loading.args = {
-    comments: [],
-    isLoading: true,
+    children: _jsx(Text, { title: "test", text: "text test" }),
 };

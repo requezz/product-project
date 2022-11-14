@@ -10,11 +10,15 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
 import { ArticleList, ArticleView } from 'entities/Article';
-import cls from './ArticlesPage.module.scss';
+export default {
+    title: 'entities/Article/ArticleList',
+    component: ArticleList,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+};
+var Template = function (args) { return _jsx(ArticleList, __assign({}, args)); };
 var article = {
     id: '1',
     title: 'Javascript news',
@@ -131,9 +135,27 @@ var article = {
         },
     ],
 };
-var ArticlesPage = function (_a) {
-    var className = _a.className;
-    var t = useTranslation().t;
-    return (_jsx("div", __assign({ className: classNames(cls.ArticlesPage, {}, [className]) }, { children: _jsx(ArticleList, { isLoading: true, view: ArticleView.BIG, articles: [] }) })));
+export var LoadingSmall = Template.bind({});
+LoadingSmall.args = {
+    articles: [],
+    isLoading: true,
+    view: ArticleView.SMALL,
 };
-export default memo(ArticlesPage);
+export var LoadingBig = Template.bind({});
+LoadingBig.args = {
+    articles: [],
+    isLoading: true,
+    view: ArticleView.BIG,
+};
+export var ListSmall = Template.bind({});
+ListSmall.args = {
+    articles: new Array(9).fill(0).map(function (item, index) { return (__assign(__assign({}, article), { id: String(index) })); }),
+    isLoading: false,
+    view: ArticleView.SMALL,
+};
+export var ListBig = Template.bind({});
+ListBig.args = {
+    articles: new Array(9).fill(0).map(function (item, index) { return (__assign(__assign({}, article), { id: String(index) })); }),
+    isLoading: false,
+    view: ArticleView.BIG,
+};
