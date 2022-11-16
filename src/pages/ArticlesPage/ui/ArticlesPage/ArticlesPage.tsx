@@ -6,10 +6,12 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/DynamicModuleLoade
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useSelector } from 'react-redux';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlePage } from 'pages/ArticlesPage/model/services/fetchNexArticlePage/fetchNextArticlePage';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
-    getArticlesPageError,
-    getArticlesPageIsLoading, getArticlesPageView,
+    getArticlesPageError, getArticlesPageHasMore,
+    getArticlesPageIsLoading, getArticlesPageNum, getArticlesPageView,
 } from '../../model/selectors/articlePageSelectors/articlePageSelectors';
 import cls from './ArticlesPage.module.scss';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
@@ -34,21 +36,35 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
         dispatch(articlesPageActions.setView(view));
     }, [dispatch]);
 
+    const onLoadNexPart = useCallback(() => {
+        dispatch(fetchNextArticlePage());
+    }, [dispatch]);
+
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlesPageActions.initState());
+        dispatch(fetchArticlesList({
+            page: 1,
+        }));
     });
+
+    if (error) {
+        return (
+            <div>
+                {t('Статья не найдена')}
+            </div>
+        );
+    }
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames(cls.ArticlesPage, {}, [className])}>
+            <Page onScrollEnd={onLoadNexPart} className={classNames(cls.ArticlesPage, {}, [className])}>
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

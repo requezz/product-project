@@ -11,6 +11,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { AddCommentForm } from 'features/addCommentForm';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import cls from './ArticleDetailsPage.module.scss';
@@ -47,18 +48,18 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
     if (!id) {
         return (
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+            <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 {t('Статья не найдена')}
-            </div>
+            </Page>
         );
     }
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Button theme={ButtonType.OUTLINE} onClick={onBackToList}>
+            <Button theme={ButtonType.OUTLINE} onClick={onBackToList} className={cls.btnBackToList}>
                 {t('Назад к списку')}
             </Button>
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+            <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id} />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <AddCommentForm onSendComment={onSendComment} />
@@ -66,7 +67,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                     isLoading={commentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

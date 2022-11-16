@@ -51,8 +51,6 @@ describe('loginByUsername.test', () => {
         expect(thunk.api.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toBe(userValue);
-
-        console.log(result);
     });
     test('error login', async () => {
         const thunk = new TestAsyncThunk(loginByUsername);
@@ -63,6 +61,5 @@ describe('loginByUsername.test', () => {
         expect(thunk.api.post).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('rejected');
         expect(result.payload).toBe('rejected');
-        console.log(result);
     });
 });
