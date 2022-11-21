@@ -5,9 +5,8 @@ import { StateSchema, ThunkExtraArg } from 'app/providers/StoreProvider/config/S
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
-import { NavigateOptions } from 'react-router';
-import { To } from 'history';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
+import { scrollSaveReducer } from 'widgets/ScrollSave';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
@@ -19,6 +18,7 @@ export function createReduxStore(
         counter: counterReducer,
         user: userReducer,
         addCommentForm: addCommentFormReducer,
+        scrollSave: scrollSaveReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);
