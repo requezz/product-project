@@ -14,13 +14,13 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
+import { scrollSaveReducer } from 'widgets/ScrollSave';
 import { createReducerManager } from './reducerManager';
-export function createReduxStore(initialState, asyncReducers, navigate) {
-    var rootReducers = __assign(__assign({}, asyncReducers), { counter: counterReducer, user: userReducer, addCommentForm: addCommentFormReducer });
+export function createReduxStore(initialState, asyncReducers) {
+    var rootReducers = __assign(__assign({}, asyncReducers), { counter: counterReducer, user: userReducer, addCommentForm: addCommentFormReducer, scrollSave: scrollSaveReducer });
     var reducerManager = createReducerManager(rootReducers);
     var extraArg = {
         api: $api,
-        navigate: navigate,
     };
     var store = configureStore({
         reducer: reducerManager.reduce,

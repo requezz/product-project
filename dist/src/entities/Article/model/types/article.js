@@ -1,3 +1,9 @@
+export var ArticleSortField;
+(function (ArticleSortField) {
+    ArticleSortField["VIEWS"] = "views";
+    ArticleSortField["TITLE"] = "title";
+    ArticleSortField["CREATED"] = "createdAt";
+})(ArticleSortField || (ArticleSortField = {}));
 export var ArticleBlockType;
 (function (ArticleBlockType) {
     ArticleBlockType["CODE"] = "CODE";

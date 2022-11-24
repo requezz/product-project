@@ -88,7 +88,6 @@ describe('loginByUsername.test', function () {
                     expect(thunk.api.post).toHaveBeenCalled();
                     expect(result.meta.requestStatus).toBe('fulfilled');
                     expect(result.payload).toBe(userValue);
-                    console.log(result);
                     return [2 /*return*/];
             }
         });
@@ -107,7 +106,6 @@ describe('loginByUsername.test', function () {
                     expect(thunk.api.post).toHaveBeenCalled();
                     expect(result.meta.requestStatus).toBe('rejected');
                     expect(result.payload).toBe('rejected');
-                    console.log(result);
                     return [2 /*return*/];
             }
         });
