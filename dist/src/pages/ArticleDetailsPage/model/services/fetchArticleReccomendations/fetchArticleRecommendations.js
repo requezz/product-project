@@ -35,34 +35,30 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { articlesPageActions } from 'pages/ArticlesPage/model/slices/articlesPageSlice';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
-import { getArticlesPageInited } from 'pages/ArticlesPage/model/selectors/articlePageSelectors/articlePageSelectors';
-export var initArticlesPage = createAsyncThunk('articlesPage/fetchNextArticlePage', function (searchParams, thunkApi) { return __awaiter(void 0, void 0, void 0, function () {
-    var getState, dispatch, inited, orderFromUrl, sortFromUrl, searchFromUrl, typeFromUrl;
+export var fetchArticleRecommendations = createAsyncThunk('articlesDetailsPage/fetchArticleReccomendations', function (props, thunkApi) { return __awaiter(void 0, void 0, void 0, function () {
+    var extra, rejectWithValue, getState, response, e_1;
     return __generator(this, function (_a) {
-        getState = thunkApi.getState, dispatch = thunkApi.dispatch;
-        inited = getArticlesPageInited(getState());
-        if (!inited) {
-            orderFromUrl = searchParams.get('order');
-            sortFromUrl = searchParams.get('sort');
-            searchFromUrl = searchParams.get('search');
-            typeFromUrl = searchParams.get('type');
-            if (orderFromUrl) {
-                dispatch(articlesPageActions.setOrder(orderFromUrl));
-            }
-            if (sortFromUrl) {
-                dispatch(articlesPageActions.setSort(sortFromUrl));
-            }
-            if (searchFromUrl) {
-                dispatch(articlesPageActions.setSearch(searchFromUrl));
-            }
-            if (typeFromUrl) {
-                dispatch(articlesPageActions.setType(typeFromUrl));
-            }
-            dispatch(articlesPageActions.initState());
-            dispatch(fetchArticlesList({}));
+        switch (_a.label) {
+            case 0:
+                extra = thunkApi.extra, rejectWithValue = thunkApi.rejectWithValue, getState = thunkApi.getState;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, extra.api.get('/articles', {
+                        params: {
+                            _limit: 4,
+                        },
+                    })];
+            case 2:
+                response = _a.sent();
+                if (!response.data) {
+                    throw new Error();
+                }
+                return [2 /*return*/, response.data];
+            case 3:
+                e_1 = _a.sent();
+                return [2 /*return*/, rejectWithValue('error')];
+            case 4: return [2 /*return*/];
         }
-        return [2 /*return*/];
     });
 }); });

@@ -35,10 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ArticleType } from 'entities/Article';
 import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
-import { getArticlesPageLimit, getArticlesPageNum, getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, } from '../../selectors/articlePageSelectors/articlePageSelectors';
+import { getArticlesPageLimit, getArticlesPageNum, getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType, } from '../../selectors/articlePageSelectors/articlePageSelectors';
 export var fetchArticlesList = createAsyncThunk('articlesPage/fetchArticlesList', function (props, thunkApi) { return __awaiter(void 0, void 0, void 0, function () {
-    var extra, rejectWithValue, getState, limit, sort, order, search, page, response, e_1;
+    var extra, rejectWithValue, getState, limit, sort, order, search, page, type, response, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -48,6 +49,7 @@ export var fetchArticlesList = createAsyncThunk('articlesPage/fetchArticlesList'
                 order = getArticlesPageOrder(getState());
                 search = getArticlesPageSearch(getState());
                 page = getArticlesPageNum(getState());
+                type = getArticlesPageType(getState());
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
@@ -64,6 +66,7 @@ export var fetchArticlesList = createAsyncThunk('articlesPage/fetchArticlesList'
                             _sort: sort,
                             _order: order,
                             q: search,
+                            type: type === ArticleType.ALL ? undefined : type,
                         },
                     })];
             case 2:

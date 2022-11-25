@@ -10,14 +10,32 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { ArticleSortSelector } from './ArticleSortSelector';
+import { action } from '@storybook/addon-actions';
+import { Tabs } from './Tabs';
 export default {
-    title: 'entities/Article/ArticleSortSelector',
-    component: ArticleSortSelector,
+    title: 'shared/Tabs',
+    component: Tabs,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
 };
-var Template = function (args) { return _jsx(ArticleSortSelector, __assign({}, args)); };
+var Template = function (args) { return _jsx(Tabs, __assign({}, args)); };
 export var Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    tabs: [
+        {
+            value: 'tab 1',
+            content: 'tab 1',
+        },
+        {
+            value: 'tab 2',
+            content: 'tab 2',
+        },
+        {
+            value: 'tab 3',
+            content: 'tab 3',
+        },
+    ],
+    value: 'tab 2',
+    onTabClick: action('onTabClick'),
+};

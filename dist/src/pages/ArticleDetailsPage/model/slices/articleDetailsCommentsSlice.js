@@ -3,7 +3,7 @@ import { fetchCommentsByArticleId, } from 'pages/ArticleDetailsPage/model/servic
 var commentsAdapter = createEntityAdapter({
     selectId: function (comment) { return comment.id; },
 });
-export var getArticleComments = commentsAdapter.getSelectors(function (state) { return state.articleDetailsComments || commentsAdapter.getInitialState(); });
+export var getArticleComments = commentsAdapter.getSelectors(function (state) { var _a; return ((_a = state.articleDetailsPage) === null || _a === void 0 ? void 0 : _a.comments) || commentsAdapter.getInitialState(); });
 var articleDetailsCommentsSlice = createSlice({
     name: 'articleDetailsCommentsSlice',
     initialState: commentsAdapter.getInitialState({

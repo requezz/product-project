@@ -12,6 +12,7 @@ export var ArticleBlockType;
 })(ArticleBlockType || (ArticleBlockType = {}));
 export var ArticleType;
 (function (ArticleType) {
+    ArticleType["ALL"] = "ALL";
     ArticleType["IT"] = "IT";
     ArticleType["SCIENCE"] = "SCIENCE";
     ArticleType["ECONOMICS"] = "ECONOMICS";
