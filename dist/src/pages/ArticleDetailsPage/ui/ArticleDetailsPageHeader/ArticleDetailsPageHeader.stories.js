@@ -10,23 +10,14 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { Select } from './Select';
+import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader';
 export default {
-    title: 'shared/Select',
-    component: Select,
+    title: 'pages/ArticleDetails/ArticleDetailsPageHeader',
+    component: ArticleDetailsPageHeader,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    args: {
-        to: '/',
-    },
 };
-var Template = function (args) { return _jsx(Select, __assign({}, args)); };
-export var Primary = Template.bind({});
-Primary.args = {
-    label: 'Укажите значение',
-    options: [
-        { value: '123', content: 'Первый пункт' },
-        { value: '1234', content: 'Второй пункт' },
-    ],
-};
+var Template = function (args) { return _jsx(ArticleDetailsPageHeader, __assign({}, args)); };
+export var Normal = Template.bind({});
+Normal.args = {};

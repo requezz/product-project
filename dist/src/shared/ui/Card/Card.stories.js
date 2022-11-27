@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { Text } from 'shared/ui/Text/Text';
+import { Text } from '../Text/Text';
 import { Card } from './Card';
 export default {
     title: 'shared/Card',

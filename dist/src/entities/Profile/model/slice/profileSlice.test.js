@@ -1,6 +1,8 @@
-import { profileActions, profileReducer, updateProfileData, ValidateProfileError, } from 'entities/Profile';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { profileActions, profileReducer } from './profileSlice';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { ValidateProfileError, } from '../types/profile';
 var data = {
     username: 'admin',
     age: 22,

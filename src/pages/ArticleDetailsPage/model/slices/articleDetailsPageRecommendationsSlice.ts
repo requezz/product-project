@@ -1,14 +1,13 @@
 import {
     createEntityAdapter,
-    createSlice, PayloadAction,
+    createSlice,
 } from '@reduxjs/toolkit';
 
-import { Comment } from 'entities/Comment';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article';
 import {
     fetchArticleRecommendations,
-} from 'pages/ArticleDetailsPage/model/services/fetchArticleReccomendations/fetchArticleRecommendations';
+} from '../../model/services/fetchArticleReccomendations/fetchArticleRecommendations';
 import { ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
 
 const recommendationsAdapter = createEntityAdapter<Article>({

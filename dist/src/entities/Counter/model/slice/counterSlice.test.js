@@ -1,5 +1,4 @@
-import { counterReducer } from 'entities/Counter';
-import { counterActions } from 'entities/Counter/model/slice/counterSlice';
+import { counterActions, counterReducer } from '../../model/slice/counterSlice';
 describe('counterSlice.test', function () {
     test('decrement', function () {
         var state = { value: 10 };

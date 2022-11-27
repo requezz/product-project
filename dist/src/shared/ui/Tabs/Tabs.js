@@ -13,7 +13,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { Card, CardTheme } from 'shared/ui/Card/Card';
+import { Card, CardTheme } from '../Card/Card';
 import cls from './Tabs.module.scss';
 export var Tabs = memo(function (props) {
     var className = props.className, tabs = props.tabs, onTabClick = props.onTabClick, value = props.value;

@@ -1,4 +1,4 @@
-import { getCounter } from 'entities/Counter/model/selectors/getCounter/getCounter';
+import { getCounter } from '../getCounter/getCounter';
 describe('getCounter', function () {
     test('should return counter value', function () {
         var state = {

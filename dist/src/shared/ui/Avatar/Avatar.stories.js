@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Avatar } from './Avatar';
 import AvatarImg from './avatar.png';
 export default {
     title: 'shared/Avatar',

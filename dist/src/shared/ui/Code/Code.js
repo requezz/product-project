@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
-import { Button, ButtonType } from 'shared/ui/Button/Button';
+import { Button, ButtonType } from '../Button/Button';
 import cls from './Code.module.scss';
 import CopyIcon from '../../assets/icons/copy-20-20.svg';
 export var Code = memo(function (props) {

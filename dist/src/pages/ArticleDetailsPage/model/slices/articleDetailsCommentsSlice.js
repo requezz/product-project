@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice, } from '@reduxjs/toolkit';
-import { fetchCommentsByArticleId, } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId, } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 var commentsAdapter = createEntityAdapter({
     selectId: function (comment) { return comment.id; },
 });
