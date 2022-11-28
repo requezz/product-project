@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { CountrySelect } from 'entities/Country/ui/CountrySelect/CountrySelect';
+import { CountrySelect } from '../CountrySelect/CountrySelect';
 export default {
     title: 'entities/CountrySelect',
     component: CountrySelect,

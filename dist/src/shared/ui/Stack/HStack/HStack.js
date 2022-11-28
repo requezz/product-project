@@ -10,17 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { CurrencySelect } from '../CurrencySelect/CurrencySelect';
-export default {
-    title: 'entities/CurrencySelect',
-    component: CurrencySelect,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-    args: {
-        to: '/',
-    },
+import { Flex } from '../Flex/Flex';
+export var HStack = function (props) {
+    return (_jsx(Flex, __assign({ direction: "row" }, props)));
 };
-var Template = function (args) { return _jsx(CurrencySelect, __assign({}, args)); };
-export var Primary = Template.bind({});
-Primary.args = {};

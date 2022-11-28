@@ -10,9 +10,9 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { AddCommentForm } from 'features/addCommentForm';
 import { action } from '@storybook/addon-actions';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import AddCommentForm from './AddCommentForm';
 export default {
     title: 'features/AddCommentForm',
     component: AddCommentForm,
