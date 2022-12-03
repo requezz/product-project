@@ -20,6 +20,7 @@ import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { useInitialEffect } from '../../../../shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -64,7 +65,7 @@ export var ArticleDetails = memo(function (props) {
         content = (_jsx(Text, { align: TextAlign.CENTER, title: t('Произошла ошибка при загрузке статьи') }));
     }
     else {
-        content = (_jsxs(_Fragment, { children: [_jsx("div", __assign({ className: cls.avatarWrapper }, { children: _jsx(Avatar, { size: 200, src: article === null || article === void 0 ? void 0 : article.img, className: cls.avatar }) })), _jsx(Text, { className: cls.title, title: article === null || article === void 0 ? void 0 : article.title, text: article === null || article === void 0 ? void 0 : article.subtitle, size: TextSize.L }), _jsxs("div", __assign({ className: cls.articleInfo }, { children: [_jsx(Icon, { className: cls.icon, Svg: EyeIcon }), _jsx(Text, { text: String(article === null || article === void 0 ? void 0 : article.views) })] })), _jsxs("div", __assign({ className: cls.articleInfo }, { children: [_jsx(Icon, { className: cls.icon, Svg: CalendarIcon }), _jsx(Text, { text: article === null || article === void 0 ? void 0 : article.createdAt })] })), article === null || article === void 0 ? void 0 : article.blocks.map(renderBlock)] }));
+        content = (_jsxs(_Fragment, { children: [_jsx(HStack, __assign({ justify: "center", max: true, className: cls.avatarWrapper }, { children: _jsx(Avatar, { size: 200, src: article === null || article === void 0 ? void 0 : article.img, className: cls.avatar }) })), _jsxs(VStack, __assign({ gap: "4", max: true }, { children: [_jsx(Text, { className: cls.title, title: article === null || article === void 0 ? void 0 : article.title, text: article === null || article === void 0 ? void 0 : article.subtitle, size: TextSize.L }), _jsxs(HStack, __assign({ gap: "8", className: cls.articleInfo }, { children: [_jsx(Icon, { className: cls.icon, Svg: EyeIcon }), _jsx(Text, { text: String(article === null || article === void 0 ? void 0 : article.views) })] })), _jsxs(HStack, __assign({ gap: "8", className: cls.articleInfo }, { children: [_jsx(Icon, { className: cls.icon, Svg: CalendarIcon }), _jsx(Text, { text: article === null || article === void 0 ? void 0 : article.createdAt })] }))] })), article === null || article === void 0 ? void 0 : article.blocks.map(renderBlock)] }));
     }
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsx("div", __assign({ className: classNames(cls.ArticleDetails, {}, [className]) }, { children: content })) })));
+    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsx(VStack, __assign({ gap: "16", className: classNames(cls.ArticleDetails, {}, [className]) }, { children: content })) })));
 });

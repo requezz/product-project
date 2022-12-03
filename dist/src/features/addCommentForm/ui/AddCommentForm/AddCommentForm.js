@@ -18,6 +18,7 @@ import { Button, ButtonType } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { HStack } from 'shared/ui/Stack';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentForm';
 import { getAddCommentFormError, getAddCommentFormText, } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
@@ -37,6 +38,6 @@ var AddCommentForm = memo(function (props) {
         onSendComment(text || '');
         onCommentTextChange('');
     }, [onCommentTextChange, onSendComment, text]);
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers }, { children: _jsxs("div", __assign({ className: classNames(cls.AddCommentForm, {}, [className]) }, { children: [_jsx(Input, { className: cls.input, placeholder: t('Введите текст комментария'), value: text, onChange: onCommentTextChange }), _jsx(Button, __assign({ onClick: onSendHandler, theme: ButtonType.OUTLINE }, { children: t('Отправить') }))] })) })));
+    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers }, { children: _jsxs(HStack, __assign({ justify: "between", max: true, className: classNames(cls.AddCommentForm, {}, [className]) }, { children: [_jsx(Input, { className: cls.input, placeholder: t('Введите текст комментария'), value: text, onChange: onCommentTextChange }), _jsx(Button, __assign({ onClick: onSendHandler, theme: ButtonType.OUTLINE }, { children: t('Отправить') }))] })) })));
 });
 export default AddCommentForm;

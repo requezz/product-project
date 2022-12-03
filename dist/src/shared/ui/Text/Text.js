@@ -9,6 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var _a;
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
@@ -27,16 +28,23 @@ export var TextAlign;
 })(TextAlign || (TextAlign = {}));
 export var TextSize;
 (function (TextSize) {
+    TextSize["S"] = "size_s";
     TextSize["M"] = "size_m";
     TextSize["L"] = "size_l";
 })(TextSize || (TextSize = {}));
+var mapSizeToHeaderTag = (_a = {},
+    _a[TextSize.S] = 'h3',
+    _a[TextSize.M] = 'h2',
+    _a[TextSize.L] = 'h1',
+    _a);
 export var Text = memo(function (props) {
     var _a;
     var className = props.className, title = props.title, text = props.text, _b = props.theme, theme = _b === void 0 ? TextTheme.PRIMARY : _b, _c = props.align, align = _c === void 0 ? TextAlign.LEFT : _c, _d = props.size, size = _d === void 0 ? TextSize.M : _d;
+    var HeaderTag = mapSizeToHeaderTag[size];
     var mods = (_a = {},
         _a[cls[theme]] = true,
         _a[cls[align]] = true,
         _a[cls[size]] = true,
         _a);
-    return (_jsxs("div", __assign({ className: classNames(cls.Text, mods, [className]) }, { children: [title && _jsx("p", __assign({ className: cls.title }, { children: title })), text && _jsx("p", __assign({ className: cls.text }, { children: text }))] })));
+    return (_jsxs("div", __assign({ className: classNames(cls.Text, mods, [className]) }, { children: [title && _jsx(HeaderTag, __assign({ className: cls.title }, { children: title })), text && _jsx("p", __assign({ className: cls.text }, { children: text }))] })));
 });

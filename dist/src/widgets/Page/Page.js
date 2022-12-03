@@ -41,5 +41,5 @@ export var Page = memo(function (props) {
     useInitialEffect(function () {
         wrapperRef.current.scrollTop = scrollPosition;
     });
-    return (_jsxs("section", __assign({ onScroll: onScroll, ref: wrapperRef, className: classNames(cls.Page, {}, [className]) }, { children: [children, onScrollEnd ? _jsx("div", { className: cls.trigger, ref: triggerRef }) : null] })));
+    return (_jsxs("main", __assign({ onScroll: onScroll, ref: wrapperRef, className: classNames(cls.Page, {}, [className]) }, { children: [children, onScrollEnd ? _jsx("div", { className: cls.trigger, ref: triggerRef }) : null] })));
 });

@@ -62,3 +62,15 @@ SizeL.args = {
     text: 'Description Description Description Description',
     size: TextSize.L,
 };
+export var SizeM = Template.bind({});
+SizeM.args = {
+    title: 'Text Lorem Ipsum',
+    text: 'Description Description Description Description',
+    size: TextSize.M,
+};
+export var SizeS = Template.bind({});
+SizeS.args = {
+    title: 'Text Lorem Ipsum',
+    text: 'Description Description Description Description',
+    size: TextSize.S,
+};

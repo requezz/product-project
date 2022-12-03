@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { fetchArticleRecommendations, } from '../../model/services/fetchArticleReccomendations/fetchArticleRecommendations';
@@ -54,6 +55,6 @@ var ArticleDetailsPage = function (_a) {
     if (!id) {
         return (_jsx(Page, __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: t('Статья не найдена') })));
     }
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsxs(Page, __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: [_jsx(ArticleDetailsPageHeader, {}), _jsx(ArticleDetails, { id: id }), _jsx(Text, { size: TextSize.L, className: cls.commentTitle, title: t('Рекомендуем') }), _jsx(ArticleList, { articles: reccomendations, isLoading: reccomendationsIsLoading, className: cls.reccomendations, target: "_blank" }), _jsx(Text, { size: TextSize.L, className: cls.commentTitle, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })) })));
+    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsx(Page, __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: _jsxs(VStack, __assign({ gap: "16", max: true }, { children: [_jsx(ArticleDetailsPageHeader, {}), _jsx(ArticleDetails, { id: id }), _jsx(Text, { size: TextSize.L, className: cls.commentTitle, title: t('Рекомендуем') }), _jsx(ArticleList, { articles: reccomendations, isLoading: reccomendationsIsLoading, className: cls.reccomendations, target: "_blank" }), _jsx(Text, { size: TextSize.L, className: cls.commentTitle, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })) })) })));
 };
 export default memo(ArticleDetailsPage);

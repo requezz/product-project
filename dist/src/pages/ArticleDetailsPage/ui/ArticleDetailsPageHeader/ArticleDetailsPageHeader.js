@@ -18,8 +18,8 @@ import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getArticleDetailsData } from 'entities/Article';
+import { HStack } from 'shared/ui/Stack';
 import { getCanEditArticle } from '../../model/selectors/article';
-import cls from './ArticleDetailsPageHeader.module.scss';
 export var ArticleDetailsPageHeader = memo(function (props) {
     var className = props.className;
     var t = useTranslation().t;
@@ -32,5 +32,5 @@ export var ArticleDetailsPageHeader = memo(function (props) {
     var onEditArticle = useCallback(function () {
         navigate("".concat(RoutePath.article_details).concat(article === null || article === void 0 ? void 0 : article.id, "/edit"));
     }, [article, navigate]);
-    return (_jsxs("div", __assign({ className: classNames(cls.ArticleDetailsPageHeader, {}, [className]) }, { children: [_jsx(Button, __assign({ theme: ButtonType.OUTLINE, onClick: onBackToList }, { children: t('Назад к списку') })), canEdit && (_jsx(Button, __assign({ className: cls.editBtn, theme: ButtonType.OUTLINE, onClick: onEditArticle }, { children: t('Редактировать') })))] })));
+    return (_jsxs(HStack, __assign({ max: true, justify: "between", className: classNames('', {}, [className]) }, { children: [_jsx(Button, __assign({ theme: ButtonType.OUTLINE, onClick: onBackToList }, { children: t('Назад к списку') })), canEdit && (_jsx(Button, __assign({ theme: ButtonType.OUTLINE, onClick: onEditArticle }, { children: t('Редактировать') })))] })));
 });

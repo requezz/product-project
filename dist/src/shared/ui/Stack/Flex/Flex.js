@@ -12,7 +12,6 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
 import cls from './Flex.module.scss';
 var justifyClasses = {
     start: cls.justifyStart,
@@ -35,7 +34,7 @@ var gapClasses = {
     16: cls.gap16,
     32: cls.gap32,
 };
-export var Flex = memo(function (props) {
+export var Flex = function (props) {
     var _a;
     var className = props.className, children = props.children, _b = props.justify, justify = _b === void 0 ? 'start' : _b, _c = props.align, align = _c === void 0 ? 'center' : _c, _d = props.direction, direction = _d === void 0 ? 'row' : _d, gap = props.gap, max = props.max;
     var t = useTranslation().t;
@@ -50,4 +49,4 @@ export var Flex = memo(function (props) {
         _a[cls.max] = max,
         _a);
     return (_jsx("div", __assign({ className: classNames(cls.Flex, mods, classes) }, { children: children })));
-});
+};

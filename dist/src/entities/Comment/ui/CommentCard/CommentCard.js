@@ -17,6 +17,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { VStack } from 'shared/ui/Stack';
 import cls from './CommentCard.module.scss';
 export var CommentCard = memo(function (props) {
     var className = props.className, comment = props.comment, isLoading = props.isLoading;
@@ -26,5 +27,5 @@ export var CommentCard = memo(function (props) {
     if (!comment) {
         return null;
     }
-    return (_jsxs("div", __assign({ className: classNames(cls.CommentCard, {}, [className]) }, { children: [_jsxs(AppLink, __assign({ to: "".concat(RoutePath.profile).concat(comment.user.id), className: cls.header }, { children: [comment.user.avatar ? _jsx(Avatar, { size: 30, src: comment.user.avatar }) : null, _jsx(Text, { className: cls.username, title: comment.user.username })] })), _jsx(Text, { className: cls.text, text: comment.text })] })));
+    return (_jsxs(VStack, __assign({ gap: "8", max: true, className: classNames(cls.CommentCard, {}, [className]) }, { children: [_jsxs(AppLink, __assign({ to: "".concat(RoutePath.profile).concat(comment.user.id), className: cls.header }, { children: [comment.user.avatar ? _jsx(Avatar, { size: 30, src: comment.user.avatar }) : null, _jsx(Text, { className: cls.username, title: comment.user.username })] })), _jsx(Text, { className: cls.text, text: comment.text })] })));
 });
