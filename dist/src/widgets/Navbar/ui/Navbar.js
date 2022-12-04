@@ -20,6 +20,8 @@ import { getUserAuthData, userActions } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './Navbar.module.scss';
 export var Navbar = memo(function (_a) {
     var className = _a.className;
@@ -37,7 +39,12 @@ export var Navbar = memo(function (_a) {
         dispatch(userActions.logout());
     }, [dispatch]);
     if (authData) {
-        return (_jsxs("header", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Text, { theme: TextTheme.INVERTED, className: cls.appName, title: t('Ulbi TV App') }), _jsx(AppLink, __assign({ to: RoutePath.article_create, theme: AppLinkTheme.SECONDARY, className: cls.createLink }, { children: t('Создать статью') })), _jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onLogout }, { children: t('Выйти') }))] })));
+        return (_jsxs("header", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Text, { theme: TextTheme.INVERTED, className: cls.appName, title: t('Ulbi TV App') }), _jsx(AppLink, __assign({ to: RoutePath.article_create, theme: AppLinkTheme.SECONDARY, className: cls.createLink }, { children: t('Создать статью') })), _jsx(Dropdown, { items: [
+                        {
+                            content: t('Выйти'),
+                            onClick: onLogout,
+                        },
+                    ], trigger: _jsx(Avatar, { size: 30, src: authData.avatar }) }), _jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onLogout }, { children: t('Выйти') }))] })));
     }
     return (_jsxs("header", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onShowModal }, { children: t('Войти') })), isAuthModal && _jsx(LoginModal, { isOpen: isAuthModal, isClose: onCloseModal })] })));
 });

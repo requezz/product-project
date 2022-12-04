@@ -10,16 +10,25 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState } from 'react';
+import { Fragment } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
-var people = [
-    { id: 1, name: 'Durward Reynolds', unavailable: false },
-    { id: 2, name: 'Kenton Towne', unavailable: false },
-    { id: 3, name: 'Therese Wunsch', unavailable: false },
-    { id: 4, name: 'Benedict Kessler', unavailable: true },
-    { id: 5, name: 'Katelyn Rohan', unavailable: false },
-];
-function MyListbox() {
-    var _a = useState(people[0]), selectedPerson = _a[0], setSelectedPerson = _a[1];
-    return (_jsxs(HListBox, __assign({ value: selectedPerson, onChange: setSelectedPerson }, { children: [_jsx(HListBox.Button, { children: selectedPerson.name }), _jsx(HListBox.Options, { children: people.map(function (person) { return (_jsx(HListBox.Option, __assign({ value: person, disabled: person.unavailable }, { children: person.name }), person.id)); }) })] })));
+import { classNames } from 'shared/lib/classNames/classNames';
+import { HStack } from '../Stack';
+import cls from './ListBox.module.scss';
+import { Button } from '../Button/Button';
+var mapDirectionClass = {
+    bottom: cls.optionsBottom,
+    top: cls.optionsTop,
+};
+export function ListBox(props) {
+    var className = props.className, items = props.items, value = props.value, defaultValue = props.defaultValue, onChange = props.onChange, readonly = props.readonly, _a = props.direction, direction = _a === void 0 ? 'bottom' : _a, label = props.label;
+    var optionsClasses = [mapDirectionClass[direction]];
+    return (_jsxs(HStack, __assign({ gap: "4" }, { children: [label && _jsx("span", { children: "".concat(label, ">") }), _jsxs(HListBox, __assign({ disabled: readonly, as: "div", className: classNames(cls.ListBox, {}, [className]), value: value, onChange: onChange }, { children: [_jsx(HListBox.Button, __assign({ disabled: readonly, className: cls.trigger }, { children: _jsx(Button, __assign({ disabled: readonly }, { children: value !== null && value !== void 0 ? value : defaultValue })) })), _jsx(HListBox.Options, __assign({ className: classNames(cls.options, {}, optionsClasses) }, { children: items === null || items === void 0 ? void 0 : items.map(function (item) { return (_jsx(HListBox.Option, __assign({ value: item.value, disabled: item.disabled, as: Fragment }, { children: function (_a) {
+                                var _b;
+                                var active = _a.active, selected = _a.selected;
+                                return (_jsxs("li", __assign({ className: classNames(cls.item, (_b = {},
+                                        _b[cls.active] = active,
+                                        _b[cls.disabled] = item.disabled,
+                                        _b)) }, { children: [selected && '!!!', item.content] })));
+                            } }), item.value)); }) }))] }))] })));
 }
