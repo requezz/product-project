@@ -39,7 +39,7 @@ var mapSizeToHeaderTag = (_a = {},
     _a);
 export var Text = memo(function (props) {
     var _a;
-    var className = props.className, title = props.title, text = props.text, _b = props.theme, theme = _b === void 0 ? TextTheme.PRIMARY : _b, _c = props.align, align = _c === void 0 ? TextAlign.LEFT : _c, _d = props.size, size = _d === void 0 ? TextSize.M : _d;
+    var className = props.className, text = props.text, title = props.title, _b = props.theme, theme = _b === void 0 ? TextTheme.PRIMARY : _b, _c = props.align, align = _c === void 0 ? TextAlign.LEFT : _c, _d = props.size, size = _d === void 0 ? TextSize.M : _d;
     var HeaderTag = mapSizeToHeaderTag[size];
     var mods = (_a = {},
         _a[cls[theme]] = true,

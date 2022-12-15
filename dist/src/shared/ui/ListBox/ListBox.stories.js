@@ -17,7 +17,67 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [
+        function (Story) { return _jsx("div", __assign({ style: { padding: 100 } }, { children: _jsx(Story, {}) })); },
+    ],
 };
 var Template = function (args) { return _jsx(ListBox, __assign({}, args)); };
 export var Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    value: '123',
+    items: [
+        {
+            content: '123qwerty', value: '321',
+        }, {
+            content: 'fggfgfgf343', value: '45454',
+        },
+    ],
+};
+export var topLeft = Template.bind({});
+topLeft.args = {
+    direction: 'top left',
+    value: '123',
+    items: [
+        {
+            content: '123qwerty', value: '321',
+        }, {
+            content: 'fggfgfgf343', value: '45454',
+        },
+    ],
+};
+export var topRight = Template.bind({});
+topRight.args = {
+    direction: 'top right',
+    value: '123',
+    items: [
+        {
+            content: '123qwerty', value: '321',
+        }, {
+            content: 'fggfgfgf343', value: '45454',
+        },
+    ],
+};
+export var bottomLeft = Template.bind({});
+bottomLeft.args = {
+    direction: 'bottom left',
+    value: '123',
+    items: [
+        {
+            content: '123qwerty', value: '321',
+        }, {
+            content: 'fggfgfgf343', value: '45454',
+        },
+    ],
+};
+export var bottomRight = Template.bind({});
+bottomRight.args = {
+    direction: 'bottom right',
+    value: '123',
+    items: [
+        {
+            content: '123qwerty', value: '321',
+        }, {
+            content: 'fggfgfgf343', value: '45454',
+        },
+    ],
+};

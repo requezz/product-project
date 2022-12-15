@@ -16,5 +16,5 @@ export var CountrySelect = memo(function (props) {
     var onChangeHandler = useCallback(function (value) {
         onChange === null || onChange === void 0 ? void 0 : onChange(value);
     }, [onChange]);
-    return (_jsx(ListBox, { onChange: onChangeHandler, value: value, defaultValue: t('Укажите страну'), label: t('Укажите страну'), items: options, readonly: readonly, direction: "top" }));
+    return (_jsx(ListBox, { onChange: onChangeHandler, value: value, defaultValue: t('Укажите страну'), label: t('Укажите страну'), items: options, readonly: readonly, direction: "top right" }));
 });

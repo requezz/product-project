@@ -7,6 +7,7 @@ import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
 import { scrollSaveReducer } from 'widgets/ScrollSave';
+import { rtkApi } from 'shared/api/rtkApi';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
@@ -19,6 +20,7 @@ export function createReduxStore(
         user: userReducer,
         addCommentForm: addCommentFormReducer,
         scrollSave: scrollSaveReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);
@@ -35,7 +37,7 @@ export function createReduxStore(
             thunk: {
                 extraArgument: extraArg,
             },
-        }),
+        }).concat(rtkApi.middleware),
     });
 
     // @ts-ignore

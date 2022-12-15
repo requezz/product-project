@@ -14,5 +14,5 @@ export var CurrencySelect = memo(function (props) {
     var onChangeHandler = useCallback(function (value) {
         onChange === null || onChange === void 0 ? void 0 : onChange(value);
     }, [onChange]);
-    return (_jsx(ListBox, { className: className, value: value, items: options, onChange: onChangeHandler, defaultValue: t('Укажите валюту'), label: t('Укажите валюту'), readonly: readonly, direction: "top" }));
+    return (_jsx(ListBox, { className: className, value: value, items: options, onChange: onChangeHandler, defaultValue: t('Укажите валюту'), label: t('Укажите валюту'), readonly: readonly, direction: "top right" }));
 });

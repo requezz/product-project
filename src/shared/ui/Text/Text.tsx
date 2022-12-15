@@ -23,7 +23,7 @@ export enum TextSize {
 interface TextProps {
     className?: string;
     title?: string;
-    text?: string | unknown;
+    text?: string;
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
@@ -40,8 +40,8 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
 export const Text = memo((props: TextProps) => {
     const {
         className,
-        title,
         text,
+        title,
         theme = TextTheme.PRIMARY,
         align = TextAlign.LEFT,
         size = TextSize.M,

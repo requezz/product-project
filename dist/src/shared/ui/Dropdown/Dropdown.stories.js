@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { Button } from 'shared/ui/Button/Button';
+import { Button } from '../Button/Button';
 import { Dropdown } from './Dropdown';
 export default {
     title: 'shared/Dropdown',

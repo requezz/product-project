@@ -12,10 +12,10 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { StoreProvider } from 'app/providers/StoreProvider';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
-import { profileReducer } from 'entities/Profile';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices';
+import { profileReducer } from 'features/editableProfileCard/model/slice/profileSlice';
 var defaultAsyncReducers = {
     loginForm: loginReducer,
     profile: profileReducer,

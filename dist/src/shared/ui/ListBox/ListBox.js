@@ -17,11 +17,13 @@ import { HStack } from '../Stack';
 import cls from './ListBox.module.scss';
 import { Button } from '../Button/Button';
 var mapDirectionClass = {
-    bottom: cls.optionsBottom,
-    top: cls.optionsTop,
+    'bottom left': cls.optionsBottomLeft,
+    'bottom right': cls.optionsBottomRight,
+    'top left': cls.optionsTopLeft,
+    'top right': cls.optionsTopRight,
 };
 export function ListBox(props) {
-    var className = props.className, items = props.items, value = props.value, defaultValue = props.defaultValue, onChange = props.onChange, readonly = props.readonly, _a = props.direction, direction = _a === void 0 ? 'bottom' : _a, label = props.label;
+    var className = props.className, items = props.items, value = props.value, defaultValue = props.defaultValue, onChange = props.onChange, readonly = props.readonly, _a = props.direction, direction = _a === void 0 ? 'bottom right' : _a, label = props.label;
     var optionsClasses = [mapDirectionClass[direction]];
     return (_jsxs(HStack, __assign({ gap: "4" }, { children: [label && _jsx("span", { children: "".concat(label, ">") }), _jsxs(HListBox, __assign({ disabled: readonly, as: "div", className: classNames(cls.ListBox, {}, [className]), value: value, onChange: onChange }, { children: [_jsx(HListBox.Button, __assign({ disabled: readonly, className: cls.trigger }, { children: _jsx(Button, __assign({ disabled: readonly }, { children: value !== null && value !== void 0 ? value : defaultValue })) })), _jsx(HListBox.Options, __assign({ className: classNames(cls.options, {}, optionsClasses) }, { children: items === null || items === void 0 ? void 0 : items.map(function (item) { return (_jsx(HListBox.Option, __assign({ value: item.value, disabled: item.disabled, as: Fragment }, { children: function (_a) {
                                 var _b;
