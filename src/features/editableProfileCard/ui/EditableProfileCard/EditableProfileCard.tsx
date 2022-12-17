@@ -2,7 +2,6 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { ProfileCard } from 'entities/Profile';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Currency } from 'entities/Currency';
@@ -23,7 +22,6 @@ import {
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
-import cls from './EditableProfileCard.module.scss';
 import { Text } from '../../../../shared/ui/Text/Text';
 
 interface EditableProfileCardProps {
@@ -121,7 +119,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
             <VStack
                 gap="8"
                 max
-                className={classNames(cls.EditableProfileCard, {}, [className])}
+                className={classNames('', {}, [className])}
             >
                 {validateErrors?.length
                    && validateErrors.map((err) => (
@@ -129,6 +127,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                            key={err}
                            theme={TextTheme.ERROR}
                            text={validateErrorTranslates[err]}
+                           data-testid="EditableProfileCard.Error"
                        />
                    ))}
                 <ProfileCard
