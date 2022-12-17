@@ -18,6 +18,7 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { CommentList } from 'entities/Comment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { VStack } from 'shared/ui/Stack';
 import { fetchCommentsByArticleId, } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
@@ -34,5 +35,5 @@ export var ArticleDetailsComments = memo(function (props) {
     useInitialEffect(function () {
         dispatch(fetchCommentsByArticleId(id));
     });
-    return (_jsxs("div", __assign({ className: classNames('', {}, [className]) }, { children: [_jsx(Text, { size: TextSize.L, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })));
+    return (_jsxs(VStack, __assign({ gap: "16", className: classNames('', {}, [className]) }, { children: [_jsx(Text, { size: TextSize.L, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })));
 });

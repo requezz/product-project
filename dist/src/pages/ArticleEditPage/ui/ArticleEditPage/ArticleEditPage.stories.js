@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import ArticleEditPage from './ArticleEditPage';
 export default {
-    title: 'pages/ArticleEditPage',
+    title: 'pages/ArticleEditPage/ArticleEditPage',
     component: ArticleEditPage,
     argTypes: {
         backgroundColor: { control: 'color' },

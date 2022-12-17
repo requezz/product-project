@@ -9,6 +9,15 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +25,7 @@ import { Button, ButtonType } from 'shared/ui/Button/Button';
 import { memo, useCallback, useState } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User';
+import { getUserAuthData, isUserAdmin, isUserManager, userActions, } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routerConfig/routerConfig';
@@ -29,6 +38,8 @@ export var Navbar = memo(function (_a) {
     var _b = useState(false), isAuthModal = _b[0], setIsAuthModal = _b[1];
     var authData = useSelector(getUserAuthData);
     var dispatch = useDispatch();
+    var isAdmin = useSelector(isUserAdmin);
+    var isManager = useSelector(isUserManager);
     var onCloseModal = useCallback(function () {
         setIsAuthModal(false);
     }, []);
@@ -38,8 +49,12 @@ export var Navbar = memo(function (_a) {
     var onLogout = useCallback(function () {
         dispatch(userActions.logout());
     }, [dispatch]);
+    var isAdminPanelAvailable = isAdmin || isManager;
     if (authData) {
-        return (_jsxs("header", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Text, { theme: TextTheme.INVERTED, className: cls.appName, title: t('Ulbi TV App') }), _jsx(AppLink, __assign({ to: RoutePath.article_create, theme: AppLinkTheme.SECONDARY, className: cls.createLink }, { children: t('Создать статью') })), _jsx(Dropdown, { direction: "bottom left", className: cls.dropdown, items: [
+        return (_jsxs("header", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Text, { theme: TextTheme.INVERTED, className: cls.appName, title: t('Ulbi TV App') }), _jsx(AppLink, __assign({ to: RoutePath.article_create, theme: AppLinkTheme.SECONDARY, className: cls.createLink }, { children: t('Создать статью') })), _jsx(Dropdown, { direction: "bottom left", className: cls.dropdown, items: __spreadArray(__spreadArray([], (isAdminPanelAvailable ? [{
+                            content: t('Админка'),
+                            href: RoutePath.admin_panel,
+                        }] : []), true), [
                         {
                             content: t('Профиль'),
                             href: RoutePath.profile + authData.id,
@@ -48,7 +63,7 @@ export var Navbar = memo(function (_a) {
                             content: t('Выйти'),
                             onClick: onLogout,
                         },
-                    ], trigger: (_jsx(Avatar, { size: 30, src: authData.avatar })) })] })));
+                    ], false), trigger: (_jsx(Avatar, { size: 30, src: authData.avatar })) })] })));
     }
     return (_jsxs("header", __assign({ className: classNames(cls.Navbar, {}, [className]) }, { children: [_jsx(Button, __assign({ theme: ButtonType.CLEAR_INVERTED, className: cls.links, onClick: onShowModal }, { children: t('Войти') })), isAuthModal && _jsx(LoginModal, { isOpen: isAuthModal, isClose: onCloseModal })] })));
 });

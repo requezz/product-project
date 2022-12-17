@@ -7,6 +7,8 @@ import { ProfilePage } from 'pages/ProfilePage';
 import { ArticlesPage } from 'pages/ArticlesPage';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
+import { AdminPanelPage } from 'pages/AdminPanelPage';
+import { UserRole } from 'entities/User';
 export var AppRoutes;
 (function (AppRoutes) {
     AppRoutes["MAIN"] = "main";
@@ -16,6 +18,7 @@ export var AppRoutes;
     AppRoutes["ARTICLE_DETAILS"] = "article_details";
     AppRoutes["ARTICLE_CREATE"] = "article_create";
     AppRoutes["ARTICLE_EDIT"] = "article_edit";
+    AppRoutes["ADMIN_PANEL"] = "admin_panel";
     // last
     AppRoutes["NOT_FOUND"] = "not_found";
 })(AppRoutes || (AppRoutes = {}));
@@ -27,6 +30,7 @@ export var RoutePath = (_a = {},
     _a[AppRoutes.ARTICLE_DETAILS] = '/articles/',
     _a[AppRoutes.ARTICLE_CREATE] = '/articles/new',
     _a[AppRoutes.ARTICLE_EDIT] = '/articles/:id/edit',
+    _a[AppRoutes.ADMIN_PANEL] = '/admin',
     // последний
     _a[AppRoutes.NOT_FOUND] = '*',
     _a);
@@ -63,6 +67,12 @@ export var routeConfig = (_b = {},
         path: "".concat(RoutePath.article_edit),
         element: _jsx(ArticleEditPage, {}),
         authOnly: true,
+    },
+    _b[AppRoutes.ADMIN_PANEL] = {
+        path: "".concat(RoutePath.admin_panel),
+        element: _jsx(AdminPanelPage, {}),
+        authOnly: true,
+        roles: [UserRole.MANAGER, UserRole.ADMIN],
     },
     // last
     _b[AppRoutes.NOT_FOUND] = {

@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { EditableProfileCard } from './EditableProfileCard';
 export default {
-    title: 'features/EditableProfileCard',
+    title: 'features/editableProfileCard/EditableProfileCard',
     component: EditableProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },

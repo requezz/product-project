@@ -14,25 +14,24 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { ProfileCard } from 'entities/Profile';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { TextTheme } from 'shared/ui/Text/Text';
-import { profileActions } from '../../model/slice/profileSlice';
+import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { VStack } from 'shared/ui/Stack';
+import { ValidateProfileError } from '../../../../features/editableProfileCard';
+import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { getProfileValidateErrors, } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { getProfileIsLoading, } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
-import cls from './EditableProfileCard.module.scss';
 import { Text } from '../../../../shared/ui/Text/Text';
-import { ValidateProfileError } from "features/editableProfileCard";
-import { DynamicModuleLoader } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 export var EditableProfileCard = memo(function (props) {
     var _a;
-    var className = props.className;
+    var className = props.className, id = props.id;
     var t = useTranslation('profile').t;
     var dispatch = useAppDispatch();
     var formData = useSelector(getProfileForm);
@@ -40,7 +39,6 @@ export var EditableProfileCard = memo(function (props) {
     var isLoading = useSelector(getProfileIsLoading);
     var readonly = useSelector(getProfileReadonly);
     var validateErrors = useSelector(getProfileValidateErrors);
-    var id = useParams().id;
     var validateErrorTranslates = (_a = {},
         _a[ValidateProfileError.SERVER_ERROR] = t('Серверная ошибка при сохранении'),
         _a[ValidateProfileError.INCORRECT_COUNTRY] = t('Некорректный регион'),
@@ -48,6 +46,9 @@ export var EditableProfileCard = memo(function (props) {
         _a[ValidateProfileError.INCORRECT_USER_DATA] = t('Имя и фамилия обязательны'),
         _a[ValidateProfileError.INCORRECT_AGE] = t('Некорректный возраст'),
         _a);
+    var reducers = {
+        profile: profileReducer,
+    };
     useInitialEffect(function () {
         if (id) {
             dispatch(fetchProfileData(id));
@@ -77,6 +78,6 @@ export var EditableProfileCard = memo(function (props) {
     var onChangeCountry = useCallback(function (country) {
         dispatch(profileActions.updateProfile({ country: country }));
     }, [dispatch]);
-    return (_jsx(DynamicModuleLoader, __assign({ reducers: true, removeAfterUnmount: true }, { children: _jsxs("div", __assign({ className: classNames(cls.EditableProfileCard, {}, [className]) }, { children: [(validateErrors === null || validateErrors === void 0 ? void 0 : validateErrors.length)
-                    && validateErrors.map(function (err) { return (_jsx(Text, { theme: TextTheme.ERROR, text: validateErrorTranslates[err] }, err)); }), _jsx(ProfileCard, { data: formData, error: error, isLoading: isLoading, readonly: readonly, onChangeFirstname: onChangeFirstname, onChangeLastname: onChangeLastname, onChangeAge: onChangeAge, onChangeCity: onChangeCity, onChangeUsername: onChangeUsername, onChangeAvatar: onChangeAvatar, onChangeCurrency: onChangeCurrency, onChangeCountry: onChangeCountry })] })) })));
+    return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsxs(VStack, __assign({ gap: "8", max: true, className: classNames('', {}, [className]) }, { children: [(validateErrors === null || validateErrors === void 0 ? void 0 : validateErrors.length)
+                    && validateErrors.map(function (err) { return (_jsx(Text, { theme: TextTheme.ERROR, text: validateErrorTranslates[err], "data-testid": "EditableProfileCard.Error" }, err)); }), _jsx(ProfileCard, { data: formData, error: error, isLoading: isLoading, readonly: readonly, onChangeFirstname: onChangeFirstname, onChangeLastname: onChangeLastname, onChangeAge: onChangeAge, onChangeCity: onChangeCity, onChangeUsername: onChangeUsername, onChangeAvatar: onChangeAvatar, onChangeCurrency: onChangeCurrency, onChangeCountry: onChangeCountry })] })) })));
 });

@@ -21,7 +21,7 @@ export var ArticleRecommendationsList = memo(function (props) {
     var className = props.className;
     var t = useTranslation().t;
     var _a = useArticleRecommendationsList(3), isLoading = _a.isLoading, articles = _a.data, error = _a.error;
-    if (isLoading || error) {
+    if (isLoading || error || !articles) {
         return null;
     }
     return (_jsxs(VStack, __assign({ gap: "8", className: classNames('', {}, [className]) }, { children: [_jsx(Text, { size: TextSize.L, title: t('Рекомендуем') }), _jsx(ArticleList, { articles: articles, target: "_blank" })] })));

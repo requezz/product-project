@@ -10,14 +10,14 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader';
+import { EditableProfileCardHeader } from './EditableProfileCardHeader';
 export default {
-    title: 'pages/ArticleDetailsPage/ArticleDetailsPageHeader',
-    component: ArticleDetailsPageHeader,
+    title: 'features/editableProfileCard/EditableProfileCardHeader',
+    component: EditableProfileCardHeader,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
 };
-var Template = function (args) { return _jsx(ArticleDetailsPageHeader, __assign({}, args)); };
+var Template = function (args) { return _jsx(EditableProfileCardHeader, __assign({}, args)); };
 export var Normal = Template.bind({});
 Normal.args = {};
