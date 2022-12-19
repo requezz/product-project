@@ -26,7 +26,7 @@ import { Text } from '../../../../shared/ui/Text/Text';
 
 interface EditableProfileCardProps {
     className?: string;
-    id: string;
+    id?: string;
 }
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
