@@ -10,8 +10,5 @@ export {
 
 export { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/roleSelectors';
 
-export {
-    User,
-    UserSchema,
-    UserRole,
-} from './model/types/user';
+export type { User, UserSchema } from './model/types/user';
+export { UserRole } from 'entities/User/model/consts/userConsts';

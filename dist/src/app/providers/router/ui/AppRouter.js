@@ -18,7 +18,7 @@ import { RequireAuth } from 'app/providers/router/ui/RequireAuth';
 var AppRouter = function () {
     var renderWithWrapper = useCallback(function (route) {
         var element = (_jsx(Suspense, __assign({ fallback: _jsx(PageLoader, {}) }, { children: route.element })));
-        return (_jsx(Route, { path: route.path, element: route.authOnly ? _jsx(RequireAuth, { children: element }) : element }, route.path));
+        return (_jsx(Route, { path: route.path, element: route.authOnly ? _jsx(RequireAuth, __assign({ roles: route.roles }, { children: element })) : element }, route.path));
     }, []);
     return (_jsx(Routes, { children: Object.values(routeConfig).map(renderWithWrapper) }));
 };

@@ -12,13 +12,14 @@ var __assign = (this && this.__assign) || function () {
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, Suspense } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { AddCommentForm } from 'features/addCommentForm';
 import { CommentList } from 'entities/Comment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { VStack } from 'shared/ui/Stack';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { fetchCommentsByArticleId, } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
@@ -35,5 +36,5 @@ export var ArticleDetailsComments = memo(function (props) {
     useInitialEffect(function () {
         dispatch(fetchCommentsByArticleId(id));
     });
-    return (_jsxs(VStack, __assign({ gap: "16", className: classNames('', {}, [className]) }, { children: [_jsx(Text, { size: TextSize.L, title: t('Комментарии') }), _jsx(AddCommentForm, { onSendComment: onSendComment }), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })));
+    return (_jsxs(VStack, __assign({ gap: "16", max: true, className: classNames('', {}, [className]) }, { children: [_jsx(Text, { size: TextSize.L, title: t('Комментарии') }), _jsx(Suspense, __assign({ fallback: _jsx(Skeleton, {}) }, { children: _jsx(AddCommentForm, { onSendComment: onSendComment }) })), _jsx(CommentList, { isLoading: commentsIsLoading, comments: comments })] })));
 });

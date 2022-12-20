@@ -1,8 +1,8 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ValidateProfileError } from '../types/editableProfileCardSchema';
 import { profileActions, profileReducer } from './profileSlice';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { ValidateProfileError } from '../../model/consts/consts';
 var data = {
     username: 'admin',
     age: 22,

@@ -10,6 +10,7 @@ export var DynamicModuleLoader = function (props) {
         Object.entries(reducers).forEach(function (_a) {
             var name = _a[0], reducer = _a[1];
             var mounted = mountedReducers[name];
+            // Добавляем новый редюсер только если его нет
             if (!mounted) {
                 store.reducerManager.add(name, reducer);
                 dispatch({ type: "@INIT ".concat(name, " reducer") });

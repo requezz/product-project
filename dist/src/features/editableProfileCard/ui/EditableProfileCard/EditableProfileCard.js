@@ -20,7 +20,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { TextTheme } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { VStack } from 'shared/ui/Stack';
-import { ValidateProfileError } from '../../../../features/editableProfileCard';
+import { ValidateProfileError } from '../../model/consts/consts';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { getProfileValidateErrors, } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';

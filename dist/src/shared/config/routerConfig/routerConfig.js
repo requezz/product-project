@@ -9,6 +9,7 @@ import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
 import { UserRole } from 'entities/User';
+import { ForbiddenPage } from 'pages/ForbiddenPage';
 export var AppRoutes;
 (function (AppRoutes) {
     AppRoutes["MAIN"] = "main";
@@ -19,6 +20,7 @@ export var AppRoutes;
     AppRoutes["ARTICLE_CREATE"] = "article_create";
     AppRoutes["ARTICLE_EDIT"] = "article_edit";
     AppRoutes["ADMIN_PANEL"] = "admin_panel";
+    AppRoutes["FORBIDDEN"] = "forbidden";
     // last
     AppRoutes["NOT_FOUND"] = "not_found";
 })(AppRoutes || (AppRoutes = {}));
@@ -31,6 +33,7 @@ export var RoutePath = (_a = {},
     _a[AppRoutes.ARTICLE_CREATE] = '/articles/new',
     _a[AppRoutes.ARTICLE_EDIT] = '/articles/:id/edit',
     _a[AppRoutes.ADMIN_PANEL] = '/admin',
+    _a[AppRoutes.FORBIDDEN] = '/forbidden',
     // последний
     _a[AppRoutes.NOT_FOUND] = '*',
     _a);
@@ -73,6 +76,10 @@ export var routeConfig = (_b = {},
         element: _jsx(AdminPanelPage, {}),
         authOnly: true,
         roles: [UserRole.MANAGER, UserRole.ADMIN],
+    },
+    _b[AppRoutes.FORBIDDEN] = {
+        path: "".concat(RoutePath.forbidden),
+        element: _jsx(ForbiddenPage, {}),
     },
     // last
     _b[AppRoutes.NOT_FOUND] = {

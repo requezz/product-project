@@ -72,6 +72,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'requezz-dev-plugin/path-checker': 'error',
+        'react/jsx-no-useless-fragment': 'off',
     },
     globals: {
         __IS_DEV__: true,

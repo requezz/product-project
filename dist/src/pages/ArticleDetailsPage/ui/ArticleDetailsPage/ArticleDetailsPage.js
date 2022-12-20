@@ -30,9 +30,6 @@ var ArticleDetailsPage = function (_a) {
     var className = _a.className;
     var t = useTranslation('article-details').t;
     var id = useParams().id;
-    if (!id) {
-        return (_jsx(Page, __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: t('Статья не найдена') })));
-    }
     return (_jsx(DynamicModuleLoader, __assign({ reducers: reducers, removeAfterUnmount: true }, { children: _jsx(Page, __assign({ className: classNames(cls.ArticleDetailsPage, {}, [className]) }, { children: _jsxs(VStack, __assign({ gap: "16", max: true }, { children: [_jsx(ArticleDetailsPageHeader, {}), _jsx(ArticleDetails, { id: id }), _jsx(ArticleRecommendationsList, {}), _jsx(ArticleDetailsComments, { id: id })] })) })) })));
 };
 export default memo(ArticleDetailsPage);

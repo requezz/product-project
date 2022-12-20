@@ -23,8 +23,9 @@ import { useNavigate } from 'react-router-dom';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from '../../../../shared/config/routerConfig/routerConfig';
 import cls from './ArticleListItem.module.scss';
-import { ArticleBlockType, ArticleView, } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleView } from "entities/Article";
+import { ArticleBlockType } from "entities/Article/model/consts/articleConsts";
 export var ArticleListItem = memo(function (props) {
     var className = props.className, article = props.article, view = props.view, target = props.target;
     var t = useTranslation().t;

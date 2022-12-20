@@ -10,6 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleDetailsComments } from './ArticleDetailsComments';
 export default {
     title: 'shared/ArticleDetailsComments',
@@ -20,4 +21,7 @@ export default {
 };
 var Template = function (args) { return _jsx(ArticleDetailsComments, __assign({}, args)); };
 export var Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    id: '1',
+};
+Normal.decorators = [StoreDecorator({})];

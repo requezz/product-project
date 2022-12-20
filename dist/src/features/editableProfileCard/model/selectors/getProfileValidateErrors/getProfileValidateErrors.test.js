@@ -1,4 +1,4 @@
-import { ValidateProfileError } from '../../types/editableProfileCardSchema';
+import { ValidateProfileError } from '../../consts/consts';
 import { getProfileValidateErrors } from './getProfileValidateErrors';
 describe('getProfileValidateErrors.test', function () {
     test('should work with filled state', function () {

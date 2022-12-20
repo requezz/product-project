@@ -21,5 +21,8 @@ export function RequireAuth(_a) {
     if (!auth || !hasRequiredRoles) {
         return _jsx(Navigate, { to: RoutePath.main, state: { from: location }, replace: true });
     }
+    if (!hasRequiredRoles) {
+        return _jsx(Navigate, { to: RoutePath.forbidden, state: { from: location }, replace: true });
+    }
     return children;
 }

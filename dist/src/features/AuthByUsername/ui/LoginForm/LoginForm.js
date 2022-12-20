@@ -45,7 +45,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
@@ -93,6 +93,6 @@ var LoginForm = memo(function (_a) {
             }
         });
     }); }, [dispatch, username, password, onSuccess]);
-    return (_jsx(DynamicModuleLoader, __assign({ removeAfterUnmount: true, reducers: initialReducers }, { children: _jsxs("div", __assign({ className: classNames(cls.LoginForm, {}, [className]) }, { children: [_jsx(Text, { title: t('Форма авторизации') }), error && _jsx(Text, { text: t('Вы ввели неверный логин или пароль'), theme: TextTheme.ERROR }), _jsx(Input, { onChange: onChangeUsername, autofocus: true, placeholder: t('Введите username'), type: "text", className: cls.input, value: username }), _jsx(Input, { onChange: onChangePassword, autofocus: true, placeholder: t('Введите пароль'), type: "text", className: cls.input, value: password }), _jsx(Button, __assign({ theme: ButtonType.OUTLINE, className: cls.loginBtn, onClick: onLoginClick, disabled: isLoading }, { children: t('Войти') }))] })) })));
+    return (_jsx(DynamicModuleLoader, __assign({ removeAfterUnmount: true, reducers: initialReducers }, { children: _jsxs("div", __assign({ className: classNames(cls.LoginForm, {}, [className]) }, { children: [_jsx(Text, { title: t('Форма авторизации') }), _jsx(_Fragment, { children: error && _jsx(Text, { text: t('Вы ввели неверный логин или пароль'), theme: TextTheme.ERROR }) }), _jsx(Input, { onChange: onChangeUsername, autofocus: true, placeholder: t('Введите username'), type: "text", className: cls.input, value: username }), _jsx(Input, { onChange: onChangePassword, autofocus: true, placeholder: t('Введите пароль'), type: "text", className: cls.input, value: password }), _jsx(Button, __assign({ theme: ButtonType.OUTLINE, className: cls.loginBtn, onClick: onLoginClick, disabled: isLoading }, { children: t('Войти') }))] })) })));
 });
 export default LoginForm;

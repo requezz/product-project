@@ -13,10 +13,10 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { ArticleView } from '../../model/consts/articleConsts';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from '../../../../shared/ui/Text/Text';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
-import { ArticleView } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
 var getSkeletons = function (view) { return (new Array(view === ArticleView.SMALL ? 9 : 3)
     .fill(0)

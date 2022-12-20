@@ -10,8 +10,8 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { ArticleView } from '../../model/types/article';
 import { ArticleList } from './ArticleList';
+import { ArticleView } from "entities/Article";
 export default {
     title: 'entities/Article/ArticleList',
     component: ArticleList,
