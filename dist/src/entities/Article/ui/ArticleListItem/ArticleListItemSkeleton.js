@@ -15,7 +15,7 @@ import { memo } from 'react';
 import { Card } from 'shared/ui/Card/Card';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cls from './ArticleListItem.module.scss';
-import { ArticleView } from "entities/Article";
+import { ArticleView } from '../../model/consts/articleConsts';
 export var ArticleListItemSkeleton = memo(function (props) {
     var className = props.className, view = props.view;
     if (view === ArticleView.BIG) {

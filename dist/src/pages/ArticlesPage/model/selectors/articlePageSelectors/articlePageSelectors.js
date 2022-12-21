@@ -1,4 +1,4 @@
-import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
+import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article/model/consts/articleConsts';
 export var getArticlesPageIsLoading = function (state) { var _a; return (_a = state.articlesPage) === null || _a === void 0 ? void 0 : _a.isLoading; };
 export var getArticlesPageError = function (state) { var _a; return (_a = state.articlesPage) === null || _a === void 0 ? void 0 : _a.error; };
 export var getArticlesPageView = function (state) { var _a; return ((_a = state.articlesPage) === null || _a === void 0 ? void 0 : _a.view) || ArticleView.SMALL; };

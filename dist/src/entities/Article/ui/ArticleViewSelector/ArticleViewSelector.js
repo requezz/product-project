@@ -17,7 +17,7 @@ import TiledIcon from 'shared/assets/icons/tiled-24-24.svg';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
 import cls from './ArticleViewSelector.module.scss';
-import { ArticleView } from "entities/Article/model/consts/articleConsts";
+import { ArticleView } from '../../model/consts/articleConsts';
 var viewTypes = [
     {
         view: ArticleView.SMALL,

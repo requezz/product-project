@@ -11,6 +11,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import { jsx as _jsx } from "react/jsx-runtime";
 import { ArticleListItem } from './ArticleListItem';
+import { ArticleView } from '../../model/consts/articleConsts';
 export default {
     title: 'entities/Article/ArticleListItem',
     component: ArticleListItem,
