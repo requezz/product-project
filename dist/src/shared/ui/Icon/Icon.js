@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import cls from './Icon.module.scss';
 export var Icon = memo(function (props) {
-    var className = props.className, Svg = props.Svg;
+    var className = props.className, Svg = props.Svg, inverted = props.inverted;
     var t = useTranslation().t;
-    return (_jsx(Svg, { className: classNames(cls.Icon, {}, [className]) }));
+    return (_jsx(Svg, { className: classNames(inverted
+            ? cls.inverted
+            : cls.Icon, {}, [className]) }));
 });

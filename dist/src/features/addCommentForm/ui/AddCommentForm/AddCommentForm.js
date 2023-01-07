@@ -17,7 +17,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonType } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { DynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { HStack } from 'shared/ui/Stack';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentForm';
 import { getAddCommentFormError, getAddCommentFormText, } from '../../model/selectors/addCommentFormSelectors';
