@@ -2,9 +2,9 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import withMock from 'storybook-addon-mock';
-import { Article } from 'entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Article } from '@/entities/Article';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
-import { StoreDecorator } from '../../../../shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'features/ArticleRecommendationsList',
@@ -26,17 +26,16 @@ const article: Article = {
     blocks: [],
     type: [],
     title: '123',
-    subtitle: 'dfdfdf',
+    subtitle: 'fdvd',
 };
 
 export const Normal = Template.bind({});
 Normal.args = {};
-
 Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
     mockData: [
         {
-            url: `${__API__}/articles?_limit=3`,
+            url: `${__API__}/articles?_limit=4`,
             method: 'GET',
             status: 200,
             response: [

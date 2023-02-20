@@ -1,6 +1,7 @@
 .ProfileCard {
     padding: 20px;
-    border: 2px solid var(--inverted-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgb(152 196 232 / 20%);
 }
 
 .loading,
@@ -9,5 +10,5 @@
 }
 
 .editing {
-    border: 2px solid var(--inverted-bg-color);
+    box-shadow: 0 0 10px 5px rgb(40 100 16);
 }

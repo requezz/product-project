@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NotificationButton } from './NotificationButton';
 
 export default {
-    title: 'shared/NotificationButton',
+    title: 'features/NotificationButton',
     component: NotificationButton,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -14,4 +14,6 @@ export default {
 const Template: ComponentStory<typeof NotificationButton> = (args) => <NotificationButton {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+
+};

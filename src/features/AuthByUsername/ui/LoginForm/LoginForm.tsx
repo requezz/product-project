@@ -1,12 +1,15 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonType } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
-import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonType } from '@/shared/ui/Button/Button';
+import { Input } from '@/shared/ui/Input/Input';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
@@ -17,7 +20,7 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
-    onSuccess: () => void
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -27,7 +30,6 @@ const initialReducers: ReducersList = {
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
-
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
@@ -46,7 +48,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
-    }, [dispatch, username, password, onSuccess]);
+    }, [dispatch, onSuccess, username, password]);
 
     return (
         <DynamicModuleLoader
@@ -55,23 +57,20 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         >
             <div className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />
-                <>
-                    {error && <Text text={t('Вы ввели неверный логин или пароль')} theme={TextTheme.ERROR} /> }
-                </>
+                {error && <Text text={t('Вы ввели неверный логин или пароль')} theme={TextTheme.ERROR} />}
                 <Input
-                    onChange={onChangeUsername}
                     autofocus
-                    placeholder={t('Введите username')}
                     type="text"
                     className={cls.input}
+                    placeholder={t('Введите username')}
+                    onChange={onChangeUsername}
                     value={username}
                 />
                 <Input
-                    onChange={onChangePassword}
-                    autofocus
-                    placeholder={t('Введите пароль')}
                     type="text"
                     className={cls.input}
+                    placeholder={t('Введите пароль')}
+                    onChange={onChangePassword}
                     value={password}
                 />
                 <Button

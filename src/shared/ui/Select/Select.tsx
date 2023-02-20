@@ -1,10 +1,10 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
-import { ChangeEvent, memo, useMemo } from 'react';
+import { ChangeEvent, useMemo } from 'react';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 
 export interface SelectOption<T extends string> {
     value: T;
-    content: string
+    content: string;
 }
 
 interface SelectProps<T extends string> {
@@ -13,10 +13,10 @@ interface SelectProps<T extends string> {
     options?: SelectOption<T>[];
     value?: T;
     onChange?: (value: T) => void;
-    readonly?: boolean
+    readonly?: boolean;
 }
 
-export const Select = <T extends string> (props: SelectProps<T>) => {
+export const Select = <T extends string>(props: SelectProps<T>) => {
     const {
         className,
         label,
@@ -27,16 +27,14 @@ export const Select = <T extends string> (props: SelectProps<T>) => {
     } = props;
 
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        if (onChange) {
-            onChange(e.target.value as T);
-        }
+        onChange?.(e.target.value as T);
     };
 
-    const optionList = useMemo(() => options?.map((opt) => (
+    const optionsList = useMemo(() => options?.map((opt) => (
         <option
             className={cls.option}
             value={opt.value}
-            key={opt.value}
+            key={opt.content}
         >
             {opt.content}
         </option>
@@ -48,7 +46,7 @@ export const Select = <T extends string> (props: SelectProps<T>) => {
         <div className={classNames(cls.Wrapper, mods, [className])}>
             {label && (
                 <span className={cls.label}>
-                    {`${label}>`}
+                    {label}
                 </span>
             )}
             <select
@@ -57,7 +55,7 @@ export const Select = <T extends string> (props: SelectProps<T>) => {
                 value={value}
                 onChange={onChangeHandler}
             >
-                {optionList}
+                {optionsList}
             </select>
         </div>
     );

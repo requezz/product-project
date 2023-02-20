@@ -1,10 +1,10 @@
 .app_green_theme {
-    --bg-color: #fff;
-    --inverted-bg-color: #015821;
-    --primary-color: #00a8cc;
-    --secondary-color: #0c7b93;
-    --inverted-primary-color: #e2dfdf;
-    --inverted-secondary-color: #cdc2ae;
+    --bg-color: #f5fbf4;
+    --inverted-bg-color: #0e6b00;
+    --primary-color: #304200;
+    --secondary-color: #6fd25f;
+    --inverted-primary-color: #f5fbf4;
+    --inverted-secondary-color: #f5fbf4;
 
     // skeleton
     --skeleton-color: #fff;
@@ -13,9 +13,12 @@
     // code
     --code-bg: #fff;
 
-    //card
-    --card-bg: #d3e5d6;
+    // card
+    --card-bg: #dfefe2;
 
-    //card
-    --listbox-bg: #d3e5d6;
+    // listbox
+    --listbox-bg: #dfefe2;
+
+    // listbox-active
+    --listbox-active-bg: #c5efce;
 }

@@ -12,7 +12,8 @@
 }
 
 .active {
-    background: var(--inverted-primary-color);
+    background: var(--listbox-active-bg);
+    border-radius: 8px;
 }
 
 .optionsBottomLeft {
@@ -31,8 +32,8 @@
 }
 
 .optionsTopLeft {
-    right: 0;
     bottom: 100%;
+    right: 0;
 }
 
 .disabled {

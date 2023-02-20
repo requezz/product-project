@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import { Page } from 'widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 
-const AdminPanelPage = memo(() => {
-    const { t } = useTranslation('admin-panel');
+const AdminPanelPage = () => {
+    const { t } = useTranslation('about');
 
     return (
         <Page>
             {t('Админ панель')}
         </Page>
     );
-});
+};
 
 export default AdminPanelPage;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { Select } from './Select';
 
 export default {
@@ -7,9 +8,6 @@ export default {
     component: Select,
     argTypes: {
         backgroundColor: { control: 'color' },
-    },
-    args: {
-        to: '/',
     },
 } as ComponentMeta<typeof Select>;
 
@@ -20,6 +18,6 @@ Primary.args = {
     label: 'Укажите значение',
     options: [
         { value: '123', content: 'Первый пункт' },
-        { value: '1234', content: 'Второй пункт' },
+        { value: '123', content: 'Второй пункт' },
     ],
 };

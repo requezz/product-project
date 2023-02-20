@@ -1,8 +1,5 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import {
-    DetailedHTMLProps, HTMLAttributes, ReactNode,
-} from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
@@ -23,11 +20,6 @@ const alignClasses: Record<FlexAlign, string> = {
     end: cls.alignEnd,
 };
 
-const directionClasses: Record<FlexDirection, string> = {
-    row: cls.directionRow,
-    column: cls.directionColumn,
-};
-
 const gapClasses: Record<FlexGap, string> = {
     4: cls.gap4,
     8: cls.gap8,
@@ -35,7 +27,12 @@ const gapClasses: Record<FlexGap, string> = {
     32: cls.gap32,
 };
 
-type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+const directionClasses: Record<FlexDirection, string> = {
+    row: cls.directionRow,
+    column: cls.directionColumn,
+};
+
+type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 export interface FlexProps extends DivProps {
     className?: string;
@@ -51,13 +48,12 @@ export const Flex = (props: FlexProps) => {
     const {
         className,
         children,
+        gap,
+        max,
         justify = 'start',
         align = 'center',
         direction = 'row',
-        gap,
-        max,
     } = props;
-    const { t } = useTranslation();
 
     const classes = [
         className,

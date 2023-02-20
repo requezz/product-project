@@ -1,8 +1,8 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { ValidateProfileError } from '../../consts/consts';
 import { getProfileValidateErrors } from './getProfileValidateErrors';
 
-describe('getProfileValidateErrors.test', () => {
+describe('getProfileForm.test', () => {
     test('should work with filled state', () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
@@ -17,6 +17,7 @@ describe('getProfileValidateErrors.test', () => {
             ValidateProfileError.INCORRECT_AGE,
         ]);
     });
+
     test('should work with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
         expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined);

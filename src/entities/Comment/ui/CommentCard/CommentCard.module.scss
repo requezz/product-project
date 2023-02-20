@@ -1,17 +1,14 @@
 .CommentCard {
-  padding: 10px;
-  border: 1px solid var(--primary-color);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgb(152 196 232 / 20%);
 }
 
 .header {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .username {
-  margin-left: 10px;
-}
-
-.loading {
-  border: none;
+    margin-left: 10px;
 }

@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { BugButton } from 'app/providers/ErrorBoundary';
-import { memo } from 'react';
+import { Page } from '@/widgets/Page';
 
-const MainPage = memo(() => {
+const MainPage = () => {
     const { t } = useTranslation();
+
     return (
-        <div>
-            <BugButton />
+        <Page>
             {t('Главная страница')}
-        </div>
+        </Page>
     );
-});
+};
 
 export default MainPage;

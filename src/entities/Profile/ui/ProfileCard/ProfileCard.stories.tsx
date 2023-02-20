@@ -1,18 +1,15 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import avatar from 'shared/assets/tests/images.jpg';
-import { ProfileCard } from './ProfileCard';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import avatar from '@/shared/assets/tests/hacker.jpg';
+import { ProfileCard } from '../ProfileCard/ProfileCard';
 
 export default {
     title: 'entities/ProfileCard',
     component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
-    },
-    args: {
-        to: '/',
     },
 } as ComponentMeta<typeof ProfileCard>;
 
@@ -22,18 +19,18 @@ export const Primary = Template.bind({});
 Primary.args = {
     data: {
         username: 'admin',
-        age: 22,
-        country: Country.Ukraine,
-        lastname: 'ulbi tv',
-        first: 'asd',
-        city: 'asf',
-        currency: Currency.USD,
+        age: 28,
+        country: Country.Russia,
+        lastname: 'musovvir',
+        first: 'abc',
+        city: 'Orel',
+        currency: Currency.EUR,
         avatar,
     },
 };
 
-export const withError = Template.bind({});
-withError.args = {
+export const WithError = Template.bind({});
+WithError.args = {
     error: 'true',
 };
 

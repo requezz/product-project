@@ -1,15 +1,15 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import ProfilePage from './ProfilePage';
+import { Country } from '../../../entities/Country';
+import { Currency } from '../../../entities/Currency';
+import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: 'pages/ProfilePage',
+    title: 'pages/ProfilePage/ProfilePage',
     component: ProfilePage,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -24,12 +24,12 @@ Normal.decorators = [StoreDecorator({
     profile: {
         form: {
             username: 'admin',
-            age: 22,
-            country: Country.Ukraine,
-            lastname: 'ulbi tv',
-            first: 'asd',
-            city: 'asf',
-            currency: Currency.USD,
+            age: 28,
+            country: Country.Russia,
+            lastname: 'musovvir',
+            first: 'abc',
+            city: 'Orel',
+            currency: Currency.EUR,
         },
     },
 })];
@@ -40,12 +40,12 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     profile: {
         form: {
             username: 'admin',
-            age: 22,
-            country: Country.Ukraine,
-            lastname: 'ulbi tv',
-            first: 'asd',
-            city: 'asf',
-            currency: Currency.USD,
+            age: 28,
+            country: Country.Russia,
+            lastname: 'musovvir',
+            first: 'abc',
+            city: 'Orel',
+            currency: Currency.EUR,
         },
     },
 })];

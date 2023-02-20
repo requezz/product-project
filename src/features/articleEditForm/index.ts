@@ -1,3 +1,3 @@
-export interface ArticleEditForm {
-    id: string;
+export interface ArticleEditFormSchema {
+  id: string;
 }

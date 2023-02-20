@@ -1,5 +1,6 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { ListBox } from './ListBox';
 
 export default {
@@ -9,7 +10,7 @@ export default {
         backgroundColor: { control: 'color' },
     },
     decorators: [
-        (Story) => <div style={{ padding: 100 }}><Story /></div>,
+        (Story) => <div style={{ padding: 200 }}><Story /></div>,
     ],
 } as ComponentMeta<typeof ListBox>;
 
@@ -19,62 +20,47 @@ export const Normal = Template.bind({});
 Normal.args = {
     value: '123',
     items: [
-        {
-            content: '123qwerty', value: '321',
-        }, {
-            content: 'fggfgfgf343', value: '45454',
-        },
+        { content: 'efsfdsfdsfvses', value: '123' },
+        { content: 'efsfdsfdsfvsedfdfs', value: '12345' },
     ],
 };
 
-export const topLeft = Template.bind({});
-topLeft.args = {
+export const TopLeft = Template.bind({});
+TopLeft.args = {
     direction: 'top left',
     value: '123',
     items: [
-        {
-            content: '123qwerty', value: '321',
-        }, {
-            content: 'fggfgfgf343', value: '45454',
-        },
+        { content: 'efsfdsfdsfvses', value: '123' },
+        { content: 'efsfdsfdsfvsedfdfs', value: '12345' },
     ],
 };
 
-export const topRight = Template.bind({});
-topRight.args = {
+export const TopRight = Template.bind({});
+TopRight.args = {
     direction: 'top right',
     value: '123',
     items: [
-        {
-            content: '123qwerty', value: '321',
-        }, {
-            content: 'fggfgfgf343', value: '45454',
-        },
+        { content: 'efsfdsfdsfvses', value: '123' },
+        { content: 'efsfdsfdsfvsedfdfs', value: '12345' },
     ],
 };
 
-export const bottomLeft = Template.bind({});
-bottomLeft.args = {
+export const BottomLeft = Template.bind({});
+BottomLeft.args = {
     direction: 'bottom left',
     value: '123',
     items: [
-        {
-            content: '123qwerty', value: '321',
-        }, {
-            content: 'fggfgfgf343', value: '45454',
-        },
+        { content: 'efsfdsfdsfvses', value: '123' },
+        { content: 'efsfdsfdsfvsedfdfs', value: '12345' },
     ],
 };
 
-export const bottomRight = Template.bind({});
-bottomRight.args = {
+export const BottomRight = Template.bind({});
+BottomRight.args = {
     direction: 'bottom right',
     value: '123',
     items: [
-        {
-            content: '123qwerty', value: '321',
-        }, {
-            content: 'fggfgfgf343', value: '45454',
-        },
+        { content: 'efsfdsfdsfvses', value: '123' },
+        { content: 'efsfdsfdsfvsedfdfs', value: '12345' },
     ],
 };

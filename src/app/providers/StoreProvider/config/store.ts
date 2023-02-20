@@ -1,25 +1,23 @@
 import {
     CombinedState, configureStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { StateSchema, ThunkExtraArg } from 'app/providers/StoreProvider/config/StateSchema';
-import { counterReducer } from 'entities/Counter';
-import { userReducer } from 'entities/User';
-import { $api } from 'shared/api/api';
-import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentForm';
-import { scrollSaveReducer } from 'widgets/ScrollSave';
-import { rtkApi } from 'shared/api/rtkApi';
+import { counterReducer } from '@/entities/Counter';
+import { userReducer } from '@/entities/User';
+import { $api } from '@/shared/api/api';
+import { scrollSaveReducer } from '@/features/ScrollSave';
+import { rtkApi } from '@/shared/api/rtkApi';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
-    initialState: StateSchema,
+    initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
-        addCommentForm: addCommentFormReducer,
-        scrollSave: scrollSaveReducer,
+        scroll: scrollSaveReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
@@ -46,4 +44,4 @@ export function createReduxStore(
     return store;
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

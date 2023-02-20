@@ -4,12 +4,7 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'airbnb',
-        'plugin:i18next/recommended',
-        'plugin:storybook/recommended',
-    ],
+    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -23,7 +18,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
-        'requezz-dev-plugin',
+        'musovvir-dev',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -35,7 +30,7 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/extensions': 'off',
         'import/prefer-default-export': 'off',
-        'no-unused-vars': 'off',
+        'no-unused-vars': 'warn',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'warn',
@@ -48,6 +43,7 @@ module.exports = {
             ignoreAttribute: [
                 'data-testid',
                 'to',
+                'type',
                 'target',
                 'justify',
                 'align',
@@ -55,25 +51,36 @@ module.exports = {
                 'gap',
                 'role',
                 'as',
-                'defaultValue',
                 'border',
             ],
         }],
         'max-len': ['error', {
             ignoreComments: true,
-            code: 125,
+            code: 140,
         }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
-        'linebreak-style': ['off', process.platform === 'win32' ? 'windows' : 'unix'],
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
-        'requezz-dev-plugin/path-checker': 'error',
-        'react/jsx-no-useless-fragment': 'off',
+        'musovvir-dev/path-checker': ['error', { alias: '@' }],
+        'musovvir-dev/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+            },
+        ],
+        'musovvir-dev/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

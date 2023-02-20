@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import ArticleEditPage from './ArticleEditPage';
 
 export default {
@@ -13,4 +14,6 @@ export default {
 const Template: ComponentStory<typeof ArticleEditPage> = (args) => <ArticleEditPage {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+
+};

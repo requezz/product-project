@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
-import { Profile } from 'entities/Profile';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
 import userEvent from '@testing-library/user-event';
-import { $api } from 'shared/api/api';
-import { EditableProfileCard } from './EditableProfileCard';
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
+import { Profile } from '@/entities/Profile';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import { $api } from '@/shared/api/api';
 import { profileReducer } from '../../model/slice/profileSlice';
+import { EditableProfileCard } from './EditableProfileCard';
 
 const profile: Profile = {
     id: '1',
@@ -16,7 +16,7 @@ const profile: Profile = {
     currency: Currency.USD,
     country: Country.Kazakhstan,
     city: 'Moscow',
-    username: 'admin123',
+    username: 'user123',
 };
 
 const options = {
@@ -25,7 +25,6 @@ const options = {
             readonly: true,
             data: profile,
             form: profile,
-
         },
         user: {
             authData: { id: '1', username: 'admin' },
@@ -70,11 +69,11 @@ describe('features/EditableProfileCard', () => {
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveButton'));
 
-        expect(screen.getByTestId('EditableProfileCardHeader.Error.Paragraph')).toBeInTheDocument();
+        expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toBeInTheDocument();
     });
 
     test('Если нет ошибок валидации, то на сервер должен уйти PUT запрос', async () => {
-        const mockPutReq = jest.spyOn($api, 'put');
+        const mockPutConReq = jest.spyOn($api, 'put');
         componentRender(<EditableProfileCard id="1" />, options);
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
@@ -82,6 +81,6 @@ describe('features/EditableProfileCard', () => {
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.SaveButton'));
 
-        expect(mockPutReq).toHaveBeenCalled();
+        expect(mockPutConReq).toHaveBeenCalled();
     });
 });

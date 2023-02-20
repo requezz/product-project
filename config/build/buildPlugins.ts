@@ -1,12 +1,14 @@
-import HTMLWebpackPlugin from 'html-webpack-plugin';
-import webpack, { HotModuleReplacementPlugin } from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import * as webpack from 'webpack';
+import { HotModuleReplacementPlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BuildOptions } from './types/config';
+
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 export function buildPlugins({
     paths, isDev, apiUrl, project,
