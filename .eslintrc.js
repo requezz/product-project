@@ -67,7 +67,13 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'requezz-dev/path-checker': ['error', { alias: '@' }],
-        'requezz-dev/public-api-imports': ['error', { alias: '@' }],
+        'requezz-dev/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFiles: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
