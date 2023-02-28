@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react';
 // import '@/app/styles/index.scss';
+// eslint-disable-next-line requezz-dev/layer-imports
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { loginReducer } from '../../../../features/AuthByUsername/testing';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';

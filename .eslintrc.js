@@ -67,6 +67,13 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'requezz-dev/path-checker': ['error', { alias: '@' }],
+        'requezz-dev/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
         'requezz-dev/public-api-imports': [
             'error',
             {
