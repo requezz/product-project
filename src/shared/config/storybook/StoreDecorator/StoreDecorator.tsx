@@ -7,13 +7,15 @@ import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/Dynami
 import { articleDetailsReducer } from '../../../../entities/Article/testing';
 import { addCommentFormReducer } from '../../../../features/addCommentForm/testing';
 import { profileReducer } from '../../../../features/editableProfileCard/testing';
+// eslint-disable-next-line requezz-dev/public-api-imports,requezz-dev/layer-imports
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage/testing';
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
     addCommentForm: addCommentFormReducer,
-    articleDetailsPage: articleDetailsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const StoreDecorator = (

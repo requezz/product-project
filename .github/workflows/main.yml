@@ -1,4 +1,4 @@
-name: linting, testing, building
+name: linting, testing.ts, building
 on:
   push:
     branches: [ master ]
@@ -27,12 +27,12 @@ jobs:
         if: always()
       - name: linting css
         run: npm run lint:scss
-      - name: unit testing
+      - name: unit testing.ts
         if: always()
         run: npm run test:unit
       - name: build storybook
         run: npm run storybook:build
         if: always()
-      - name: screenshot testing
+      - name: screenshot testing.ts
         run: npm run test:ui:ci
         if: always()

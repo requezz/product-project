@@ -73,7 +73,7 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing.ts'],
             },
         ],
         'requezz-dev/public-api-imports': [
