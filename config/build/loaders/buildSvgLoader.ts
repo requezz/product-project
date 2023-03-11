@@ -1,6 +1,7 @@
 export const buildSvgLoader = () => ({
     test: /\.svg$/,
     // issuer: /\.[jt]sx?$/,
+    exclude: /node_modules/,
     use: [
         {
             loader: '@svgr/webpack',
